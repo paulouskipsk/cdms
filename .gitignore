@@ -34,3 +34,8 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# docker-sync
+.docker-sync/*
+docker-compose-mac.yml
+docker-sync.yml
