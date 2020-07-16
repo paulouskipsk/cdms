@@ -73,7 +73,8 @@ RUN apt-get update -qq && \
                        sudo         \
                        ssh          \
                        rsync        \
-                       procps
+                       procps       \
+                       vim
 
 # --------------------------
 # INSTALL NODEJS BY NVM
@@ -136,5 +137,5 @@ WORKDIR $APP
 
 # Install bundler and rails
 RUN gem install bundler -v 2.1.4 \
- && gem install rails -v 6.0.3.2 \
+ && gem install rails -v 6.0.3.2
 
