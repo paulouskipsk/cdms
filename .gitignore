@@ -39,3 +39,5 @@ yarn-debug.log*
 .docker-sync/*
 docker-compose-mac.yml
 docker-sync.yml
+
+config/application.yml
