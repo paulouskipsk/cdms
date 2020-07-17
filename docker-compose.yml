@@ -12,6 +12,8 @@ x-app: &app
     - db
   networks:
     - app-network
+  stdin_open: true
+  tty: true
 
 services:
   web:
