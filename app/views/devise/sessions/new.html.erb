@@ -1,5 +1,5 @@
-<% provide(:head_title, 'Log in') %>
-<% provide(:title, 'Log in') %>
+<% provide(:head_title, t('views.session.new.head_title')) %>
+<% provide(:title, t('views.session.new.title')) %>
 
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="form-inputs">
@@ -14,10 +14,10 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Log in", class: 'btn btn-primary btn-block' %>
+    <%= f.button :submit, t('views.session.new.submit'), class: 'btn btn-primary btn-block' %>
   </div>
 <% end %>
 
 <% provide(:link) do %>
-  Forgot your password? <%= link_to 'Reset it', new_password_path(resource_name) %>
+  <%= t('views.session.new.forgot') %> <%= link_to t('views.session.new.links.reset'), new_password_path(resource_name) %>
 <% end %>

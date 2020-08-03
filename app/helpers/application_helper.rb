@@ -4,7 +4,7 @@ module ApplicationHelper
       notice: 'alert-info' }[flash_type.to_sym] || "alert-#{flash_type.to_s}"
   end
 
-  def full_title(page_title = '', base_title = 'CDMS')
+  def full_title(page_title = '', base_title = t('views.app.title'))
     if page_title.empty?
       base_title
     else

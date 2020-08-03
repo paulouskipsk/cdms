@@ -1,0 +1,29 @@
+pt-BR:
+  simple_form:
+    "yes": Sim
+    "no": Não
+    required:
+      text: obrigatório
+      mark: '*'
+    buttons:
+      cancel: Cancelar
+      edit: Editar
+      update: Atualizar
+      back: Voltar
+    error_notification:
+      default_message: 'Alguns erros foram encontrados, por favor verifique:'
+    labels:
+      user:
+        username: 'Usuário'
+        password: 'Senha'
+    hints:
+      user:
+        username: 'Usuário para logar'
+        password: 'Sem caracteres especiais, por favor!'
+    placeholders:
+      user:
+        username: 'Seu usuário'
+        password: '****'
+    prompts:
+      user:
+        role: 'Selecione um opção'

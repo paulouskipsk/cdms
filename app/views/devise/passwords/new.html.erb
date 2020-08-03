@@ -1,5 +1,5 @@
-<% provide(:head_title, 'Forgot your password?') %>
-<% provide(:title, 'Forgot your password?') %>
+<% provide(:head_title, t('views.session.password.new.title')) %>
+<% provide(:title, t('views.session.password.new.subtitle')) %>
 
 <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= f.error_notification %>
@@ -12,10 +12,10 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions", class: 'btn btn-primary btn-block' %>
+    <%= f.button :submit, t('views.session.password.new.submit'), class: 'btn btn-primary btn-block' %>
   </div>
 <% end %>
 
 <% provide(:link) do %>
-  Forget it, <%= link_to 'send me back', new_session_path(resource_name) %> to the sign in screen.
+  <%= t('views.session.password.new.forget') %>, <%= link_to t('views.session.password.new.links.back'), new_session_path(resource_name) %> <%= t('views.session.password.new.back_to_login') %>
 <% end %>

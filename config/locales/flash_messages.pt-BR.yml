@@ -1,0 +1,15 @@
+pt-BR:
+  flash:
+    actions:
+      update:
+        m: '%{resource_name} Atualizado com sucesso!'
+        f: '%{resource_name} Atualizada com sucesso!'
+      create:
+        m: '%{resource_name} criado com sucesso!'
+        f: '%{resource_name} criada com sucesso!'
+      destroy:
+        m: '%{resource_name} removido com sucesso!'
+        f: '%{resource_name} removida com sucesso!'
+        bond: Não é possível remover %{resource_name} com vínculos!'
+      errors: Existem dados incorretos!
+    not_authorized: Acesso não autorizado!

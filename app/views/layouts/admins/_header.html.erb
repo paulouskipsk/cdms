@@ -6,7 +6,7 @@
       <% end  %>
 
       <span class="d-lg-block mt-1 text-muted font-weight-bold">
-        SGCD
+       <%= t('views.app.title') %>
       </span>
 
       <div class="d-flex order-lg-2 ml-auto">
@@ -17,16 +17,16 @@
 
             <span class="ml-2 d-none d-lg-block">
               <span class="text-default"><%= current_admin.name %></span>
-              <small class="text-muted d-block mt-1">Admnistrador</small>
+              <small class="text-muted d-block mt-1"><%= Admin.model_name.human %></small>
             </span>
           </a>
 
           <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
             <%= link_to '#', class: 'dropdown-item' do %>
-              <i class="dropdown-icon far fa-user"></i> Perfil
+              <i class="dropdown-icon far fa-user"></i> <%= t('devise.registrations.edit.title') %>
             <% end %>
             <%= link_to destroy_admin_session_path, method: :delete, class: 'dropdown-item' do %>
-              <i class="dropdown-icon fas fa-sign-out-alt"></i> Sair
+              <i class="dropdown-icon fas fa-sign-out-alt"></i> <%= t('views.admin.links.sign_out') %>
             <% end %>
           </div>
         </div>
