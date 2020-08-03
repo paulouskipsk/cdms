@@ -8,7 +8,7 @@
         </span>
         <div>
           <h4 class="m-0" data-toggle="tooltip" data-placement="bottom" title="Clique aqui para acessar a área administrativa">
-            <%= link_to 'Área administrativa', '#' %>
+            <%= link_to 'Área administrativa', new_admin_session_path %>
           </h4>
           <small class="text-muted">Administradores</small>
         </div>
@@ -31,12 +31,5 @@
       </div>
     </div>
   </div>
-
-
-  <% if admin_signed_in? %>
-    <%= link_to 'Sair', destroy_admin_session_path, method: :delete %>
-  <% else %>
-    <%= link_to 'Entrar', new_admin_session_path %>
-  <% end %>
 
 </div>
