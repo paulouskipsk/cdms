@@ -1,0 +1,55 @@
+pt-BR:
+  views:
+    app:
+      title: SGCD
+      name: Sistema Gerenciador de Certificados e Declarações da UTFPR-GP
+    boolean:
+      'true': Sim
+      'false': Não
+    tooltips:
+      home:
+        admin:
+          sign_in: Clique aqui para acessar a área administrativa
+        user:
+          sign_in: Clique aqui para acessar a área do usuário
+    links:
+      back: Voltar
+      home:
+        admin:
+          sign_in: Acessar a área do administrativa
+        user:
+          sign_in: Acessar a área do usuário
+    session:
+      new:
+        head_title: Entrar
+        title: Entre na sua conta
+        submit: Entrar
+        forgot: Esqueceu sua senha?
+        links:
+          reset: Recuperar
+      password:
+        new:
+          title: Esqueceu a senha?
+          subtitle: Entre com seu email que enviaremos as instruções para recuperar sua senha
+          submit: Enviar instruções
+          forget: Esqueça
+          back_to_login: para tela de login
+          links:
+            back: envie-me
+        edit:
+          title: Alterar minha senha
+          new_password: Nova senha
+          submit: Mudar minha senha
+          minimum_password_length: 'no mínimo %{count} caracteres'
+
+    admin:
+      name:
+        singular: Administrador
+        plural:  Administradores
+      links:
+        sign_out: Sair
+    user:
+      name:
+        singular: Usuário
+        plural:  Usuários
+

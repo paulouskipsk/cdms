@@ -1,0 +1,23 @@
+<% provide(:head_title, t('views.session.new.head_title')) %>
+<% provide(:title, t('views.session.new.title')) %>
+
+<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="form-inputs">
+    <%= f.input :email,
+                required: false,
+                autofocus: true,
+                input_html: { autocomplete: "email" } %>
+    <%= f.input :password,
+                required: false,
+                input_html: { autocomplete: "current-password" } %>
+    <%= f.input :remember_me, as: :checkbox_tabler if devise_mapping.rememberable? %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, t('views.session.new.submit'), class: 'btn btn-primary btn-block' %>
+  </div>
+<% end %>
+
+<% provide(:link) do %>
+  <%= t('views.session.new.forgot') %> <%= link_to t('views.session.new.links.reset'), new_password_path(resource_name) %>
+<% end %>

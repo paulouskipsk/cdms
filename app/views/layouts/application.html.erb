@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Cdms</title>
+    <title><%= full_title(yield(:head_title)) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -18,9 +18,13 @@
         <div class="card-header">
           <%= image_tag 'cdms_icon.png', class: 'header-brand-img', alt: 'CDMS Icon' %>
           Sistema para Gestão de Certificados e Declarações
+          <%= t('views.app.name') %>
         </div>
 
         <div class="card-body" id="main-content">
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+
           <%= yield %>
         </div>
       </div>
