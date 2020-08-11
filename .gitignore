@@ -41,3 +41,5 @@ docker-compose-mac.yml
 docker-sync.yml
 
 config/application.yml
+
+coverage/*
