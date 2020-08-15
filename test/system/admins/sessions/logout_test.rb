@@ -1,7 +1,6 @@
 require 'application_system_test_case'
 
 class LogoutTest < ApplicationSystemTestCase
-
   context 'success logout' do
     should 'displays success logout message' do
       admin = create(:admin)
@@ -16,5 +15,4 @@ class LogoutTest < ApplicationSystemTestCase
       assert_selector('div.alert.alert-info', text: I18n.t('devise.sessions.already_signed_out'))
     end
   end
-
 end

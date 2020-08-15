@@ -1,7 +1,6 @@
 require 'application_system_test_case'
 
 class EditProfileTest < ApplicationSystemTestCase
-
   should 'updates with success when the data are valid' do
     admin = create(:admin)
     login_as(admin, scope: :admin)
@@ -29,7 +28,6 @@ class EditProfileTest < ApplicationSystemTestCase
     assert_field 'admin_email', with: new_email
   end
 
-
   should 'not update with invalid data' do
     admin = create(:admin)
     login_as(admin, scope: :admin)
@@ -56,4 +54,3 @@ class EditProfileTest < ApplicationSystemTestCase
     end
   end
 end
-

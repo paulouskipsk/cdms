@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class ApplicationHelperTest < ActionView::TestCase
-
   context '#full_title' do
     should 'return the default title' do
       assert_equal 'SGCD', full_title

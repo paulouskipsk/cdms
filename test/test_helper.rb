@@ -12,7 +12,7 @@ class ActiveSupport::TestCase
     SimpleCov.command_name "#{SimpleCov.command_name}-#{worker}" if ENV['COVERAGE']
   end
 
-  parallelize_teardown do |worker|
+  parallelize_teardown do |_worker|
     SimpleCov.result if ENV['COVERAGE']
   end
 

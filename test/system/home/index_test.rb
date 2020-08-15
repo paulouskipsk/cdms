@@ -1,7 +1,6 @@
 require 'application_system_test_case'
 
 class IndexTest < ApplicationSystemTestCase
-
   context 'links' do
     should 'have sign_in' do
       visit root_path
@@ -9,5 +8,4 @@ class IndexTest < ApplicationSystemTestCase
       assert_selector "a[href='#']", text: I18n.t('views.links.home.user.sign_in')
     end
   end
-
 end

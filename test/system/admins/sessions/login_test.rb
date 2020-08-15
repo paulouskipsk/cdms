@@ -1,7 +1,6 @@
 require 'application_system_test_case'
 
 class LoginTest < ApplicationSystemTestCase
-
   context 'success login' do
     should 'displays flash and admins profile link and sign out' do
       admin = create(:admin)
@@ -34,7 +33,8 @@ class LoginTest < ApplicationSystemTestCase
       assert_current_path(new_admin_session_path)
 
       attribute_name = Admin.human_attribute_name(:email)
-      assert_selector 'div.alert.alert-warning', text: I18n.t('devise.failure.invalid', authentication_keys: attribute_name)
+      assert_selector 'div.alert.alert-warning',
+                      text: I18n.t('devise.failure.invalid', authentication_keys: attribute_name)
     end
   end
 
@@ -47,4 +47,3 @@ class LoginTest < ApplicationSystemTestCase
     end
   end
 end
-

@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class Admins::DashboardControllerTest < ActionDispatch::IntegrationTest
-
   context 'not logged in' do
     should 'redirect to sing_in' do
       get admins_root_url
@@ -18,5 +17,4 @@ class Admins::DashboardControllerTest < ActionDispatch::IntegrationTest
       assert_response :success
     end
   end
-
 end

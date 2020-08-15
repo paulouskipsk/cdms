@@ -10,7 +10,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   driven_by :selenium, using: :chrome, screen_size: [1280, 720], options: {
     url: "http://#{ENV['SELENIUM_HOST']}:#{ENV['SELENIUM_PORT']}/wd/hub",
     desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(
-      chromeOptions: { args: self::args }
+      chromeOptions: { args: args }
     )
   }
 
@@ -22,6 +22,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   end
 
   private
+
   def app_host
     app = "http://#{ENV['TEST_APP_HOST']}"
     port = Capybara.current_session.server.port
