@@ -1,0 +1,12 @@
+exclude_paths:
+  - vendor
+detectors:
+  # You can disable smells completely
+  IrresponsibleModule:
+    enabled: false
+  UtilityFunction:
+    exclude:
+      - "ApplicationHelper#bootstrap_class_for"
+  InstanceVariableAssumption:
+    exclude:
+      - "CheckboxTablerInput"

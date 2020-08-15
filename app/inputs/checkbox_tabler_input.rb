@@ -11,10 +11,10 @@ class CheckboxTablerInput < SimpleForm::Inputs::Base
   end
 
   def span_tag
-    options[:field_name] ||= object.class.human_attribute_name(attribute_name)
+    field_name = options[:field_name] ||= object.class.human_attribute_name(attribute_name)
 
     template.tag.span(class: 'custom-control-label') do
-      options[:field_name]
+      field_name
     end
   end
 

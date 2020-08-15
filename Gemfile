@@ -33,9 +33,12 @@ group :development do
 
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'brakeman'
+  gem 'bullet'
   gem 'rubocop', require: false
   gem 'rubocop-minitest', require: false
   gem 'rubocop-rails', require: false
+  gem 'rubycritic', require: false
 end
 
 group :test do
