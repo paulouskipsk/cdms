@@ -76,6 +76,7 @@ jobs:
           SELENIUM_HOST: selenium
           SELENIUM_PORT: 4444
           TEST_APP_HOST: testHost
+        run: |
           bundle exec rails webpacker:compile
           bundle exec rails db:prepare
           bundle exec rails test
