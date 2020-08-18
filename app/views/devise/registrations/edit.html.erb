@@ -1,0 +1,29 @@
+<% provide(:head_title, t('.title')) %>
+<% provide(:page_title, t('.title')) %>
+
+<%= simple_form_for(resource, as: resource_name,
+                    url: admin_registration_path,
+                    html: { method: :put }) do |f| %>
+
+  <%= f.error_notification %>
+
+  <div class="form-row">
+    <div class="col-sm-12">
+      <%= f.input :name, required: true, autofocus: true %>
+      <%= f.input :email, required: true %>
+      <%= f.input :password,
+        hint: t('.leave_blank_if_you_don_t_want_to_change_it') %>
+      <%= f.input :password_confirmation %>
+      <%= f.input :current_password,
+        hint: t('.current_password_to_confirm'),
+        required: true %>
+    </div>
+  </div>
+
+  <div class="d-flex">
+    <%= link_to t('views.links.back'), :admins_root, class: 'btn btn-secondary' %>
+
+    <%= f.button :submit,
+      t('.update'), class: 'btn-primary ml-auto' %>
+  </div>
+<% end %>

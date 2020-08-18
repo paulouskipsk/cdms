@@ -43,30 +43,21 @@ services:
 
   tests:
     <<: *app
-    command: >
-      bash -c "
-        rm -f tmp/pids/server.pid &&
-        bundle exec puma -b tcp://0.0.0.0:3001 -d &&
-        bundle exec puma -C config/puma.rb
-        "
-    ports:
-      - 3001:3001
     environment:
       RAILS_ENV: test
       DATABASE_URL: postgres://postgres@db
       SELENIUM_HOST: selenium
       SELENIUM_PORT: 4444
       TEST_APP_HOST: tests
-      TEST_PORT: 3001
     shm_size: '2gb' #set shared memory
+    depends_on:
+      - db
 
   selenium:
     image: selenium/standalone-chrome-debug:latest
     ports:
       - 4444:4444
       - 5900:5900
-    logging:
-      driver: none
     networks:
       - app-network
 

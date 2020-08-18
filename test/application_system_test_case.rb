@@ -1,5 +1,31 @@
-require "test_helper"
+require 'test_helper'
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
-  driven_by :selenium, using: :chrome, screen_size: [1400, 1400]
+  def self.args
+    args = ['--no-default-browser-check', '--start-maximized']
+    args << 'headless' unless ENV['LAUNCH_BROWSER']
+    args
+  end
+
+  driven_by :selenium, using: :chrome, screen_size: [1280, 720], options: {
+    url: "http://#{ENV['SELENIUM_HOST']}:#{ENV['SELENIUM_PORT']}/wd/hub",
+    desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(
+      chromeOptions: { args: args }
+    )
+  }
+
+  def setup
+    Capybara.server_host = '0.0.0.0'
+    Capybara.app_host = app_host
+    host! app_host
+    super
+  end
+
+  private
+
+  def app_host
+    app = "http://#{ENV['TEST_APP_HOST']}"
+    port = Capybara.current_session.server.port
+    "#{app}:#{port}"
+  end
 end

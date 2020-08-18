@@ -17,7 +17,7 @@ Rails.application.configure do
 
   # Enable/disable caching. By default caching is disabled.
   # Run rails dev:cache to toggle caching.
-  if Rails.root.join('tmp', 'caching-dev.txt').exist?
+  if Rails.root.join('tmp/caching-dev.txt').exist?
     config.action_controller.perform_caching = true
     config.action_controller.enable_fragment_cache_logging = true
 
@@ -65,6 +65,12 @@ Rails.application.configure do
 
   config.web_console.whitelisted_ips = Socket.ip_address_list.reduce([]) do |res, addrinfo|
     addrinfo.ipv4? ? res << IPAddr.new(addrinfo.ip_address).mask(24) : res
+  end
+
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.bullet_logger = true
+    Bullet.raise = true # raise an error if n+1 query occurs
   end
 end
 
