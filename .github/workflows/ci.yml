@@ -1,0 +1,89 @@
+name: CI
+on:
+  push:
+    branches:
+      - master
+      - ci
+  pull_request:
+    branches:
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: ruby:2.7.1
+      options: --network-alias testHost
+    services:
+      db:
+        image: postgres
+        ports: ['5432:5432']
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_HOST_AUTH_METHOD: trust
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      selenium:
+        image: selenium/standalone-chrome-debug:latest
+        ports: ['4444:4444']
+    steps:
+      - uses: actions/checkout@v1
+      - name: Copy application env file
+        run: cp config/application.ci.yml config/application.yml
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+      - name: Install libpq-dev for postgres
+        run: apt-get -yqq install libpq-dev
+      - name: Cache gems dependencies
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+      - name: Install gems dependencies
+        run: |
+          gem install bundler
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.16.3
+      - name: Find yarn cache location
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: JS package cache
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Install packages
+        run: |
+          yarn install --pure-lockfile
+          yarn install --check-files
+      - name: Run tests
+        env:
+          RAILS_ENV: test
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+          DATABASE_URL: postgres://postgres:@db
+          SELENIUM_HOST: selenium
+          SELENIUM_PORT: 4444
+          TEST_APP_HOST: testHost
+        run: |
+          bundle exec rails webpacker:compile
+          bundle exec rails db:prepare
+          bundle exec rails test
+          bundle exec rails test:system
+      - name: Check code quality
+        run: |
+          yarn run lint
+          bundle exec rubocop --parallel
+          bundle exec brakeman
+          bundle exec rubycritic --format console --mode-ci
