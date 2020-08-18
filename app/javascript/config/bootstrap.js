@@ -1,5 +1,5 @@
-import 'bootstrap'
+import 'bootstrap';
 
-document.addEventListener("turbolinks:load", () => {
-  $('[data-toggle="tooltip"]').tooltip({container: '#main-content'})
-})
+document.addEventListener('turbolinks:load', () => {
+  $('[data-toggle="tooltip"]').tooltip({ container: '#main-content' });
+});
