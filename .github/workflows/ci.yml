@@ -55,10 +55,10 @@ jobs:
         with:
           path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Install packages
+      - name: Install yarn and dependencies
         run: |
-          yarn install --pure-lockfile
+          npm install -g yarn
+          yarn install
           yarn install --check-files
       - name: Run tests
         env:
