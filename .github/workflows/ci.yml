@@ -78,4 +78,4 @@ jobs:
           yarn run lint
           bundle exec rubocop --parallel
           bundle exec brakeman
-          bundle exec rubycritic --format console --mode-ci
+          bundle exec rubycritic --format console
