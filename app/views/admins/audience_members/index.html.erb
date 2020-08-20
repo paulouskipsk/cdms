@@ -1,0 +1,40 @@
+<% provide(:head_title, I18n.t('activerecord.models.audience_member.other')) %>
+<% provide(:page_title, I18n.t('activerecord.models.audience_member.other')) %>
+
+<table class="table card-table table-vcenter text-nowrap datatable dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+  <thead>
+    <tr role="row">
+      <th class="w-1 sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="No.: activate to sort column descending" style="width: 45px;">
+        <%= t('activerecord.attributes.audience_member.id') %>
+      </th>
+      <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Invoice Subject: activate to sort column ascending" style="width: 171px;">
+        <%= t('activerecord.attributes.audience_member.name') %>
+      </th>
+      <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Client: activate to sort column ascending" style="width: 130px;">
+      <%= t('activerecord.attributes.audience_member.cpf') %>
+      </th>
+      <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="VAT No.: activate to sort column ascending" style="width: 81px;">
+        <%= t('activerecord.attributes.audience_member.email') %>
+      </th>
+      <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label=": activate to sort column ascending" style="width: 29px;"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @audience_members.each do | audience_member | %>
+      <tr role="row" class="odd">
+        <td class="sorting_1"><span class="text-muted"><%= audience_member.id %></span></td>
+        <td><%= audience_member.name %></td>
+        <td><%= audience_member.cpf %></td>
+        <td><%= audience_member.email %></td>
+        <td>
+          <a class="icon" href="javascript:void(0)">
+            <i class="fe fe-edit"></i>
+          </a>
+          <a class="icon" href="javascript:void(0)">
+            <i class="fe fe-trash-2"></i>
+          </a>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

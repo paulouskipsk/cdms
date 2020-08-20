@@ -11,5 +11,7 @@ Rails.application.routes.draw do
   as :admin do
     get 'admins/edit', to: 'admins/registrations#edit', as: 'edit_admin_registration'
     put 'admins/edit', to: 'admins/registrations#update', as: 'admin_registration'
+
+    get '/audience_members', to: 'admins/audience_members#index', as: 'list_audience_members'
   end
 end

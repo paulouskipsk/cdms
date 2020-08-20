@@ -4,6 +4,9 @@ pt-BR:
       admin:
         one: Administrador
         other: Administradores
+      audience_member:
+        one: Membro de audiência
+        other: Membros de audiência
     attributes:
       attribute_commons: &commons
         name: Nome
@@ -16,4 +19,8 @@ pt-BR:
         password_confirmation: Confirmação de senha
         remember_me: Lembre-me
         reset_password_token: Token para recuperação de senha
+        <<: *commons
+      audience_member:
+        cpf: CPF
+        id: Código
         <<: *commons
