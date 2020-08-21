@@ -48,7 +48,7 @@ group :test do
 
   gem 'shoulda-context', '~> 2.0.0'
   gem 'shoulda-matchers', '~> 4.3.0'
-  gem 'simplecov', require: false
+  gem 'simplecov', '0.17.1', require: false
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
