@@ -2,10 +2,9 @@
 
 # Certificate and Declaration Management System
 
-## Wha is the CDMS?
+## What is the CDMS?
 
 It is software that colleges can use to manage certificates and statements issued
-----
 
 ### Maintainers
 
