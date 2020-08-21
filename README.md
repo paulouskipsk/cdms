@@ -1,24 +1,18 @@
-# README
+![CI](https://github.com/TSIDW5/cdms/workflows/CI/badge.svg?branch=master)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Certificate and Declaration Management System
 
-Things you may want to cover:
+## Wha is the CDMS?
 
-* Ruby version
+It is software that colleges can use to manage certificates and statements issued
+----
 
-* System dependencies
+### Maintainers
 
-* Configuration
+* Diego Marczal (https://github.com/dmarczal)
 
-* Database creation
+### License
 
-* Database initialization
+MIT License. Copyright 2020 CDMS.
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+You are not granted rights or licenses to the trademarks of the CDMS, including without limitation the CDMS name or logo.
