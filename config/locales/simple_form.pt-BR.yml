@@ -10,6 +10,8 @@ pt-BR:
       edit: Editar
       update: Atualizar
       back: Voltar
+      new: Novo %{entity}
+      save: Salvar
     error_notification:
       default_message: 'Alguns erros foram encontrados, por favor verifique:'
     labels:

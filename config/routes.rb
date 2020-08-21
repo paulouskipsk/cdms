@@ -13,5 +13,7 @@ Rails.application.routes.draw do
     put 'admins/edit', to: 'admins/registrations#update', as: 'admin_registration'
 
     get '/audience_members', to: 'admins/audience_members#index', as: 'list_audience_members'
+    get '/audience_members/new', to: 'admins/audience_members#new', as: 'new_audience_member'
+    post '/audience_members', to: 'admins/audience_members#create', as: 'create_audience_member'
   end
 end
