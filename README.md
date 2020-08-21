@@ -1,4 +1,6 @@
 ![CI](https://github.com/TSIDW5/cdms/workflows/CI/badge.svg?branch=master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/1999c562acdd528fd37f/maintainability)](https://codeclimate.com/github/TSIDW5/cdms/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/1999c562acdd528fd37f/test_coverage)](https://codeclimate.com/github/TSIDW5/cdms/test_coverage)
 
 # Certificate and Declaration Management System
 
