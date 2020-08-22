@@ -41,6 +41,21 @@ class Admins::AudienceMembersController < ActionController::Base
       render :edit
     end
   end
+  
+  def destroy 
+    audience_member = AudienceMember.find(params[:id])
+
+    if audience_member.valid?
+      audience_member.destroy
+      flash[:success] = I18n.t('flash.actions.destroy.m', { resource_name: I18n.t('activerecord.models.audience_member.one') })
+      redirect_to list_audience_members_path   
+    else 
+      flash[:error] = I18n.t('flash.not_found')
+      redirect_to list_audience_members_path 
+    end
+    
+  end
+  
 
   private
     def audience_member_params

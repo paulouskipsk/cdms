@@ -37,10 +37,10 @@
           <i class="fe fe-edit"></i>
         <% end %>
 
+        <%= link_to destroy_audience_member_path(audience_member.id), class: 'icon', method: :delete, data: {confirm: I18n.t('simple_form.confirm')}, active: :exclusive do %>
+          <i class="fe fe-trash-2"></i>
+        <% end %>
 
-          <a class="icon" href="javascript:void(0)">
-            <i class="fe fe-trash-2"></i>
-          </a>
         </td>
       </tr>
     <% end %>

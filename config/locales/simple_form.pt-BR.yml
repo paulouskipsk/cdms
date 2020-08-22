@@ -29,3 +29,4 @@ pt-BR:
     prompts:
       user:
         role: 'Selecione um opção'
+    confirm: Deseja deletar este registro?
