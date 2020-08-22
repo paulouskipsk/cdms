@@ -1,5 +1,7 @@
-<%= simple_form_for(audience_member, url: create_audience_member_path, class: 'card-body') do |f| %>
+<%= simple_form_for(audience_member, url: url_form, class: 'card-body') do |f| %>
   <%= f.error_notification %>
+
+  <%= f.hidden_field :id %>
 
   <div class="form-group">
     <%= f.input :name, 

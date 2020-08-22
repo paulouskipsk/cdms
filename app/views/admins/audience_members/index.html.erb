@@ -32,9 +32,12 @@
         <td><%= audience_member.cpf %></td>
         <td><%= audience_member.email %></td>
         <td>
-          <a class="icon" href="javascript:void(0)">
-            <i class="fe fe-edit"></i>
-          </a>
+         
+        <%= link_to edit_audience_member_path(audience_member.id), class: 'icon', active: :exclusive do %>
+          <i class="fe fe-edit"></i>
+        <% end %>
+
+
           <a class="icon" href="javascript:void(0)">
             <i class="fe fe-trash-2"></i>
           </a>

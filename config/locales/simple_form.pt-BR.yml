@@ -7,7 +7,7 @@ pt-BR:
       mark: '*'
     buttons:
       cancel: Cancelar
-      edit: Editar
+      edit: Editar %{entity}
       update: Atualizar
       back: Voltar
       new: Novo %{entity}
