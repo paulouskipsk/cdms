@@ -31,3 +31,5 @@ pt-BR:
           attributes:
             email:
               bad_email: Formato de email inválido
+            cpf:
+              bad_cpf: Inválido

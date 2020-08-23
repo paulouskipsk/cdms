@@ -16,6 +16,7 @@ gem 'font-awesome-sass', '~> 5.13.0'
 gem 'rails-i18n', '~> 6.0.0'
 gem 'simple_form'
 gem 'sprockets-rails', git: 'git://github.com/rails/sprockets-rails.git'
+gem "cpf_cnpj"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

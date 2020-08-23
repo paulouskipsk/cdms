@@ -33,4 +33,30 @@ class AudienceMemberTest < ActiveSupport::TestCase
       assert_not audience_member.valid?
     end
   end
+
+  context 'cpf format' do
+    should 'be a valid cpf' do
+      audience_member = FactoryBot.build(:audience_member, cpf: '047.593.909.36')
+      assert audience_member.valid?
+
+      audience_member = FactoryBot.build(:audience_member, cpf: '424.987.978-07')
+      assert audience_member.valid?
+    end
+
+    should 'be an invalid cpf' do
+      audience_member = FactoryBot.build(:audience_member, cpf: '111.111.111-11')
+      assert_not audience_member.valid?
+
+      audience_member = FactoryBot.build(:audience_member, cpf: 'aaa.aaa.aaa-aa')
+      assert_not audience_member.valid?
+
+      audience_member = FactoryBot.build(:audience_member, cpf: '047.593.909.37')
+      assert_not audience_member.valid?
+
+      audience_member = FactoryBot.build(:audience_member, cpf: '123.123.123-44')
+      assert_not audience_member.valid?
+    end
+  end
+
+  
 end
