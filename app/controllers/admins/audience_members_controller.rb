@@ -1,6 +1,4 @@
-class Admins::AudienceMembersController < ActionController::Base
-  layout 'layouts/admins/application'
-
+class Admins::AudienceMembersController < Admins::BaseController
   def index
     @audience_members = AudienceMember.all
   end
@@ -15,7 +13,7 @@ class Admins::AudienceMembersController < ActionController::Base
     if audience_member.valid?
       audience_member.save
       flash[:success] = I18n.t('flash.actions.create.m', { resource_name: I18n.t('activerecord.models.audience_member.one') })
-      redirect_to list_audience_members_path
+      redirect_to admins_list_audience_members_path
     else
       @audience_member = audience_member
       render :new
@@ -37,7 +35,7 @@ class Admins::AudienceMembersController < ActionController::Base
     elsif audience_member.valid?
         audience_member.save
         flash[:success] = I18n.t('flash.actions.update.m', { resource_name: I18n.t('activerecord.models.audience_member.one') })
-        redirect_to list_audience_members_path        
+        redirect_to admins_list_audience_members_path        
     else
       @audience_member = audience_member
       render :edit
@@ -50,7 +48,7 @@ class Admins::AudienceMembersController < ActionController::Base
     if audience_member
       audience_member.destroy
       flash[:success] = I18n.t('flash.actions.destroy.m', { resource_name: I18n.t('activerecord.models.audience_member.one') })
-      redirect_to list_audience_members_path   
+      redirect_to admins_list_audience_members_path   
     else 
       audience_member_not_found
     end
@@ -65,6 +63,6 @@ class Admins::AudienceMembersController < ActionController::Base
 
     def audience_member_not_found
       flash[:error] = I18n.t('flash.not_found')
-      redirect_to list_audience_members_path 
+      redirect_to admins_list_audience_members_path 
     end
 end

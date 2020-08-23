@@ -1,7 +1,7 @@
 <% provide(:head_title, I18n.t('activerecord.models.audience_member.other')) %>
 <% provide(:page_title, I18n.t('activerecord.models.audience_member.other')) %>
 
-<%= link_to new_audience_member_path, class: 'btn btn-outline-primary btn-sm', active: :exclusive do %>
+<%= link_to admins_new_audience_member_path, class: 'btn btn-outline-primary btn-sm', active: :exclusive do %>
   <i class="fe fe-user-plus"></i>
   <%= I18n.t('simple_form.buttons.new', { entity: I18n.t('activerecord.models.audience_member.one_lower_case') }) %>
 <% end %>
@@ -33,11 +33,11 @@
         <td><%= audience_member.email %></td>
         <td>
          
-        <%= link_to edit_audience_member_path(audience_member.id), class: 'icon', active: :exclusive do %>
+        <%= link_to admins_edit_audience_member_path(audience_member.id), class: 'icon', active: :exclusive do %>
           <i class="fe fe-edit"></i>
         <% end %>
 
-        <%= link_to destroy_audience_member_path(audience_member.id), class: 'icon', method: :delete, data: {confirm: I18n.t('simple_form.confirm')}, active: :exclusive do %>
+        <%= link_to admins_destroy_audience_member_path(audience_member.id), class: 'icon', method: :delete, data: {confirm: I18n.t('simple_form.confirm')}, active: :exclusive do %>
           <i class="fe fe-trash-2"></i>
         <% end %>
 
