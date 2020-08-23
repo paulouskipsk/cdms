@@ -15,7 +15,7 @@
   </div>
 
   <div class="form-group">
-    <%= f.input :cpf, required: true, class: 'form-control' %>
+    <%= f.input :cpf, required: true, class: 'form-control', :input_html => {'data-mask': '000.000.000-00'} %>
   </div>
 
   <div class="form-footer">
