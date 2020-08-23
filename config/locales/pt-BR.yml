@@ -30,6 +30,6 @@ pt-BR:
         audience_member:
           attributes:
             email:
-              bad_email: Formato de email inválido
+              bad_email: formato inválido
             cpf:
-              bad_cpf: Inválido
+              bad_cpf: formato inválido
