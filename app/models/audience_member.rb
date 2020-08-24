@@ -1,4 +1,4 @@
-require "cpf_cnpj"
+require 'cpf_cnpj'
 
 class AudienceMember < ApplicationRecord
   validates :name, :cpf, :email, presence: true
@@ -7,7 +7,6 @@ class AudienceMember < ApplicationRecord
   validate  :validate_cpf
 
   def validate_cpf
-    errors.add(:cpf, I18n.t('activerecord.errors.models.audience_member.attributes.cpf.bad_cpf')) unless CPF.valid?(self.cpf)
+    errors.add(:cpf, I18n.t('activerecord.errors.models.audience_member.attributes.cpf.bad_cpf')) unless CPF.valid?(cpf)
   end
-  
 end

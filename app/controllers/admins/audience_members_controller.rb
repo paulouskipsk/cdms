@@ -3,28 +3,26 @@ class Admins::AudienceMembersController < Admins::BaseController
     @audience_members = AudienceMember.all
   end
 
-  def new; 
+  def new
     @audience_member = AudienceMember.new
   end
 
   def create
-      audience_member = AudienceMember.new(audience_member_params)      
+    audience_member = AudienceMember.new(audience_member_params)
 
     if audience_member.valid?
-      audience_member.save
-      flash[:success] = I18n.t('flash.actions.create.m', { resource_name: I18n.t('activerecord.models.audience_member.one') })
-      redirect_to admins_list_audience_members_path
+      save_audience_member(audience_member, false)
     else
       @audience_member = audience_member
       render :new
     end
   end
 
-  def edit 
+  def edit
     @audience_member = AudienceMember.find(params[:id])
   end
 
-  def update 
+  def update
     audience_member = AudienceMember.find(audience_member_params[:id])
     audience_member.name = audience_member_params[:name]
     audience_member.email = audience_member_params[:email]
@@ -32,37 +30,44 @@ class Admins::AudienceMembersController < Admins::BaseController
 
     if !audience_member
       audience_member_not_found
-    elsif audience_member.valid?
-        audience_member.save
-        flash[:success] = I18n.t('flash.actions.update.m', { resource_name: I18n.t('activerecord.models.audience_member.one') })
-        redirect_to admins_list_audience_members_path        
     else
-      @audience_member = audience_member
-      render :edit
+      save_audience_member(audience_member, true)
     end
   end
-  
-  def destroy 
+
+  def destroy
     audience_member = AudienceMember.find(params[:id])
 
     if audience_member
       audience_member.destroy
-      flash[:success] = I18n.t('flash.actions.destroy.m', { resource_name: I18n.t('activerecord.models.audience_member.one') })
-      redirect_to admins_list_audience_members_path   
-    else 
+      flash[:success] = t('flash.actions.destroy.m', { resource_name: t('activerecord.models.audience_member.one') })
+      redirect_to admins_list_audience_members_path
+    else
       audience_member_not_found
     end
-    
   end
-  
 
   private
-    def audience_member_params
-      params.require(:audience_member).permit(:id,:name, :email, :cpf)
-    end
 
-    def audience_member_not_found
-      flash[:error] = I18n.t('flash.not_found')
-      redirect_to admins_list_audience_members_path 
+  def audience_member_params
+    params.require(:audience_member).permit(:id, :name, :email, :cpf)
+  end
+
+  def audience_member_not_found
+    flash[:error] = t('flash.not_found')
+    redirect_to admins_list_audience_members_path
+  end
+
+  def save_audience_member(audience_member, is_editing)
+    i18n_key = is_editing ? 'update' : 'create'
+    if audience_member.valid?
+      audience_member.save
+      flash[:success] =
+        t("flash.actions.#{i18n_key}.m", { resource_name: t('activerecord.models.audience_member.one') })
+      redirect_to admins_list_audience_members_path
+    else
+      @audience_member = audience_member
+      render is_editing ? :edit : :new
     end
+  end
 end

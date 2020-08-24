@@ -57,6 +57,4 @@ class AudienceMemberTest < ActiveSupport::TestCase
       assert_not audience_member.valid?
     end
   end
-
-  
 end
