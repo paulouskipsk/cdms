@@ -4,6 +4,9 @@ pt-BR:
       admin:
         one: Administrador
         other: Administradores
+      user:
+        one: Usuário
+        other: Usuários
     attributes:
       attribute_commons: &commons
         name: Nome
@@ -17,3 +20,6 @@ pt-BR:
         remember_me: Lembre-me
         reset_password_token: Token para recuperação de senha
         <<: *commons
+      user:
+        username: Usuário
+        register_number: Número do registro
