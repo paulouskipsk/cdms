@@ -14,6 +14,9 @@ pt-BR:
           sign_in: Clique aqui para acessar a área do usuário
     links:
       back: Voltar
+      edit: Editar
+      destroy: Deletar
+      show: Visualizar
       home:
         admin:
           sign_in: Acessar a área do administrativa
@@ -52,4 +55,14 @@ pt-BR:
       name:
         singular: Usuário
         plural:  Usuários
-
+      new:
+        title: Novo usuário
+      show:
+        title: Visualizar usuário
+      edit:
+        title: Editar usuário
+      table:
+        name: Nome
+        email: Email
+        username: Usuário
+        register_number: Número do registro
