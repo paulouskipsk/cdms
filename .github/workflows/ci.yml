@@ -9,9 +9,13 @@ on:
 jobs:
   tests:
     runs-on: ubuntu-latest
+    env:
+      FILES_PATH_TO_TEST: /var/www/cdms/test/samples
     container:
       image: ruby:2.7.1
       options: --network-alias testHost
+      volumes:
+        - /var/www/cdms/test/samples:/var/www/cdms/test/samples
     services:
       db:
         image: postgres
@@ -28,6 +32,8 @@ jobs:
       selenium:
         image: selenium/standalone-chrome-debug:latest
         ports: ['4444:4444']
+        volumes:
+          - /var/www/cdms/test/samples:/var/www/cdms/test/samples
     steps:
       - uses: actions/checkout@v2
         with:
@@ -66,6 +72,10 @@ jobs:
           npm install -g yarn
           yarn install
           yarn install --check-files
+
+      - name: Copy files to upload test
+        run: |
+          cp -r test/samples/* $FILES_PATH_TO_TEST
 
       - name: Run tests
         env:
