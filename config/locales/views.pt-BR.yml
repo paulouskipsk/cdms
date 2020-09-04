@@ -6,6 +6,11 @@ pt-BR:
     boolean:
       'true': Sim
       'false': Não
+    status:
+      true: Ativo
+      false: Inativo
+    file:
+      choose: Procurar...
     tooltips:
       home:
         admin:
@@ -14,11 +19,16 @@ pt-BR:
           sign_in: Clique aqui para acessar a área do usuário
     links:
       back: Voltar
+      edit: Editar
+      destroy: Deletar
+      show: Visualizar
       home:
         admin:
           sign_in: Acessar a área do administrativa
         user:
           sign_in: Acessar a área do usuário
+    search:
+      placeholder: Procurar...
     session:
       new:
         head_title: Entrar
@@ -52,4 +62,11 @@ pt-BR:
       name:
         singular: Usuário
         plural:  Usuários
-
+      new:
+        title: Novo usuário
+      show:
+        title: Visualizar usuário
+      edit:
+        title: Editar usuário
+      links:
+        new: Novo usuário

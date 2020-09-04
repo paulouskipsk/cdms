@@ -40,7 +40,8 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Copy application env file
-        run: cp config/application.ci.yml config/application.yml
+        run: |
+          cp config/application.ci.yml config/application.yml
 
       - name: Install libpq-dev for postgres
         run: apt-get -yqq install libpq-dev
