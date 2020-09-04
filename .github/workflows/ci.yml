@@ -37,6 +37,8 @@ jobs:
           - /var/www/cdms/test/samples:/var/www/cdms/test/samples
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Copy application env file
         run: |
