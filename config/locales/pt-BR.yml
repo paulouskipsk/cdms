@@ -4,6 +4,12 @@ pt-BR:
       admin:
         one: Administrador
         other: Administradores
+      department:
+        one: Departamento
+        other: Departamentos
+      department_module:
+        one: Módulo de departamento
+        other: Módulos de departamento
       user:
         one: Usuário
         other: Usuários
@@ -19,6 +25,18 @@ pt-BR:
         password_confirmation: Confirmação de senha
         remember_me: Lembre-me
         reset_password_token: Token para recuperação de senha
+        <<: *commons
+      department:
+        name: Nome
+        description: Descrição
+        initials: Sigla
+        local: Local
+        phone: Telefone
+        email: Email
+        <<: *commons
+      department_module:
+        name: Nome
+        description: Descrição
         <<: *commons
       user:
         username: Usuário
