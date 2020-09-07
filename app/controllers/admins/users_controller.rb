@@ -5,7 +5,7 @@ class Admins::UsersController < Admins::BaseController
     @users = User.all
   end
 
-  def show;
+  def show
     set_role
   end
 
@@ -58,11 +58,7 @@ class Admins::UsersController < Admins::BaseController
   end
 
   def set_role
-    if @user.role_id
-      @role = Role.find(@user.role_id)
-    else
-      @role = Role.new
-    end
+    @user.role_id ? @role = Role.find(@user.role_id) :@role = Role.new
   end
 
   def user_params

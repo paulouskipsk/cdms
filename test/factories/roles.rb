@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :role do
-    name { "MyString" }
-    descriprion { "" }
+    name { 'general_manager' }
+    descriprion { 'Diretor geral' }
   end
 end
