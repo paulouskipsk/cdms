@@ -8,5 +8,7 @@
 
 Admin.create_with(name: 'Administrador', password: '123456').find_or_create_by!(email: 'admin@admin.com')
 
-Role.create_with(description: 'Diretor geral').find_or_create_by!(name: 'general_manager')
+role = Role.create_with(description: 'Diretor geral').find_or_create_by!(name: 'general_manager')
 Role.create_with(description: 'Administrador assistente').find_or_create_by!(name: 'assistant_administrator')
+
+User.create_with(name: 'Administrador', register_number: '123', cpf: CPF.generate(true), role_id: role.id).find_or_create_by!(username: 'admin')

@@ -5,7 +5,7 @@ class Admins::UsersController < Admins::BaseController
     @users = User.all
   end
 
-  def show; 
+  def show;
     set_role
   end
 
@@ -41,8 +41,13 @@ class Admins::UsersController < Admins::BaseController
   end
 
   def destroy
-    @user.destroy
-    flash[:success] = t('flash.actions.destroy.m', resource_name: User.model_name.human)
+    role = Role.where('name': 'general_manager').first
+    if @user.role_id != role.id || User.where('role_id': role.id).count > 1
+      @user.destroy
+      flash[:success] = t('flash.actions.destroy.m', resource_name: User.model_name.human)
+    else
+      flash[:error] = I18n.t('flash.actions.destroy.user_admin')
+    end
     redirect_to admins_users_path
   end
 
