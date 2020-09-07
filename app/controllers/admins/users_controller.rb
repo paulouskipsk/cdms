@@ -5,13 +5,18 @@ class Admins::UsersController < Admins::BaseController
     @users = User.all
   end
 
-  def show; end
+  def show; 
+    set_role
+  end
 
   def new
     @user = User.new
+    @roles = Role.all
   end
 
-  def edit; end
+  def edit
+    @roles = Role.all
+  end
 
   def create
     @user = User.new(user_params)
@@ -20,6 +25,7 @@ class Admins::UsersController < Admins::BaseController
       redirect_to admins_users_path
     else
       flash.now[:error] = I18n.t('flash.actions.errors')
+      @roles = Role.all
       render :new
     end
   end
@@ -46,7 +52,11 @@ class Admins::UsersController < Admins::BaseController
     @user = User.find(params[:id])
   end
 
+  def set_role
+    @role = Role.find(@user.role_id)
+  end
+
   def user_params
-    params.require(:user).permit(:name, :email, :username, :register_number, :cpf, :active, :avatar)
+    params.require(:user).permit(:name, :email, :username, :register_number, :cpf, :active, :avatar, :role_id)
   end
 end

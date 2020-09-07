@@ -29,5 +29,5 @@ pt-BR:
         password: '****'
     prompts:
       user:
-        role: Selecione um opção
+        role: Selecione uma opção
     confirm: Deseja deletar este registro?

@@ -32,6 +32,11 @@
       <strong><%= User.human_attribute_name(:active) %>:</strong>
       <%= t("views.status.#{@user.active?}") %>
     </p>
+
+    <p>
+      <strong><%= User.human_attribute_name(:role) %>:</strong>
+      <%= @role.description %>
+    </p>
   </div>
 
   <div class="col-sm-6">
