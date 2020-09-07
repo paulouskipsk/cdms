@@ -53,7 +53,11 @@ class Admins::UsersController < Admins::BaseController
   end
 
   def set_role
-    @role = Role.find(@user.role_id)
+    if @user.role_id
+      @role = Role.find(@user.role_id)
+    else
+      @role = Role.new
+    end
   end
 
   def user_params
