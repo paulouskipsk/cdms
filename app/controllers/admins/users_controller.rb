@@ -9,9 +9,12 @@ class Admins::UsersController < Admins::BaseController
 
   def new
     @user = User.new
+    @roles = Role.all
   end
 
-  def edit; end
+  def edit
+    @roles = Role.all
+  end
 
   def create
     @user = User.new(user_params)
