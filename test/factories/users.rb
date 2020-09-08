@@ -4,6 +4,7 @@ FactoryBot.define do
     register_number { '123123' }
     sequence(:username) { |n| "usarname#{n}" }
     cpf { CPF.generate(true) }
+    role_id { create(:role).id }
     active { false }
   end
 end
