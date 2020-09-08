@@ -41,9 +41,7 @@ class Admins::UsersController < Admins::BaseController
   end
 
   def destroy
-    role = Role.where('name': 'general_manager').first
-    if @user.role_id != role.id || User.where('role_id': role.id).count > 1
-      @user.destroy
+    if @user.destroy
       flash[:success] = t('flash.actions.destroy.m', resource_name: User.model_name.human)
     else
       flash[:error] = I18n.t('flash.actions.destroy.user_admin')
@@ -58,7 +56,7 @@ class Admins::UsersController < Admins::BaseController
   end
 
   def set_role
-    @user.role_id ? @role = Role.find(@user.role_id) :@role = Role.new
+    @role = @user.role_id ? Role.find(@user.role_id) : Role.new
   end
 
   def user_params
