@@ -1,0 +1,25 @@
+<% provide(:head_title, t('views.admin.name.plural')) %>
+<% provide(:page_title, t('views.admin.name.plural')) %>
+
+<%= render 'shared/search_and_new', search_path: '#', new_path: new_admins_admin_path, new_link: 'views.admin.links.new' %>
+
+<div class="table-responsive">
+
+    <table class="table card-table table-striped table-vcenter table-options">
+        <thead>
+            <tr>
+                <th><%= User.human_attribute_name(:name) %></th>
+                <th><%= User.human_attribute_name(:email) %></th>
+                <th><%= User.human_attribute_name(:username) %></th>
+                <th><%= User.human_attribute_name(:register_number) %></th>
+                <th><%= User.human_attribute_name(:role) %></th>
+                <th><%= User.human_attribute_name(:active) %></th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <%= render partial: "admin", collection: @admins %>
+        </tbody>
+    </table>
+</div>

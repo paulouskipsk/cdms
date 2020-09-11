@@ -2,30 +2,26 @@ class Admins::UsersController < Admins::BaseController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.all
+    @users = User.where(:role_id => nil)
   end
 
-  def show
-    set_role
-  end
+  def show; end
 
   def new
     @user = User.new
-    @roles = Role.all
   end
 
-  def edit
-    @roles = Role.all
-  end
+  def edit; end
 
   def create
+    puts("\n\n\nchegou no usuario\n\n\n")
+
     @user = User.new(user_params)
     if @user.save
       flash[:success] = t('flash.actions.create.m', resource_name: User.model_name.human)
       redirect_to admins_users_path
     else
       flash.now[:error] = I18n.t('flash.actions.errors')
-      @roles = Role.all
       render :new
     end
   end
@@ -55,11 +51,7 @@ class Admins::UsersController < Admins::BaseController
     @user = User.find(params[:id])
   end
 
-  def set_role
-    @role = @user.role_id ? Role.find(@user.role_id) : Role.new
-  end
-
   def user_params
-    params.require(:user).permit(:name, :email, :username, :register_number, :cpf, :active, :avatar, :role_id)
+    params.require(:user).permit(:name, :email, :username, :register_number, :cpf, :active, :avatar)
   end
 end

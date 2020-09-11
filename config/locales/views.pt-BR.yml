@@ -60,8 +60,15 @@ pt-BR:
       name:
         singular: Administrador
         plural:  Administradores
+      new:
+        title: Novo administrador
+      show:
+        title: Visualizar administrador
+      edit:
+        title: Editar administrador
       links:
         sign_out: Sair
+        new: Novo administrador
     user:
       name:
         singular: Usuário

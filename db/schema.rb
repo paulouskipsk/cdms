@@ -62,10 +62,12 @@ ActiveRecord::Schema.define(version: 2020_09_07_030013) do
   end
 
   create_table "roles", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
+    t.string "name", null: false
+    t.string "acronym", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["acronym"], name: "index_roles_on_acronym", unique: true
+    t.index ["name"], name: "index_roles_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|

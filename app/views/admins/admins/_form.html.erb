@@ -1,4 +1,4 @@
-<%= simple_form_for [:admins, @user] do |f| %>
+<%= simple_form_for [:admins, @admin], :url => {controller: 'admins'} do |f| %>
 
   <div class="row">
     <%= f.input :name, wrapper_html: { class: 'col-sm-6'}  %>
@@ -18,13 +18,14 @@
   </div>
 
   <div class="row">
+    <%= f.association :role, collection: @roles, include_blank: false, wrapper_html:  { class: 'col-sm-5' } %>
     <%= f.input :avatar, as: :choose_file, wrapper_html:  { class: 'col-sm-5' }, input_html: { accept: 'image/*' } %>
     <%= f.input :active, as: :switch_single, wrapper_html: { class: 'col-sm-2' } %>
   </div>
 
   <div class="form-footer">
     <div class="d-flex">
-      <%= link_to t('views.links.back'), admins_users_path, class: 'btn btn-secondary' %>
+      <%= link_to t('views.links.back'), admins_admins_path, class: 'btn btn-secondary' %>
       <%= f.button :submit, class: 'btn btn-primary ml-auto' %>
     </div>
   </div>

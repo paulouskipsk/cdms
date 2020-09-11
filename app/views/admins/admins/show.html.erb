@@ -1,46 +1,50 @@
-<% provide(:head_title, t('views.user.show.title')) %>
-<% provide(:page_title, t('views.user.show.title')) %>
+<% provide(:head_title, t('views.admin.show.title')) %>
+<% provide(:page_title, t('views.admin.show.title')) %>
 
 <div class="row">
   <div class="col-sm-6">
     <p>
       <strong><%= User.human_attribute_name(:name) %>:</strong>
-      <%= @user.name %>
+      <%= @admin.name %>
     </p>
 
     <p>
       <strong><%= User.human_attribute_name(:email) %>:</strong>
-      <%= @user.email %>
+      <%= @admin.email %>
     </p>
 
     <p>
       <strong><%= User.human_attribute_name(:username) %>:</strong>
-      <%= @user.username %>
+      <%= @admin.username %>
     </p>
 
     <p>
       <strong><%= User.human_attribute_name(:register_number) %>:</strong>
-      <%= @user.register_number %>
+      <%= @admin.register_number %>
     </p>
 
     <p>
       <strong><%= User.human_attribute_name(:cpf) %>:</strong>
-      <%= @user.cpf %>
+      <%= @admin.cpf %>
     </p>
 
     <p>
       <strong><%= User.human_attribute_name(:active) %>:</strong>
-      <%= t("views.status.#{@user.active?}") %>
+      <%= t("views.status.#{@admin.active?}") %>
     </p>
 
+    <p>
+      <strong><%= User.human_attribute_name(:role) %>:</strong>
+      <%= @role.name %>
+    </p>
   </div>
 
   <div class="col-sm-6">
-    <%= image_tag @user.avatar.url %>
+    <%= image_tag @admin.avatar.url %>
   </div>
 </div>
 
 <div class="d-flex mt-3">
-  <%= link_to t('views.links.back'), admins_users_path, class: 'btn btn-secondary' %>
-  <%= link_to t('views.links.edit'), edit_admins_user_path(@user), class: 'btn btn-primary ml-auto' %>
+  <%= link_to t('views.links.back'), admins_admins_path, class: 'btn btn-secondary' %>
+  <%= link_to t('views.links.edit'), edit_admins_admin_path(@admin), class: 'btn btn-primary ml-auto' %>
 </div>
