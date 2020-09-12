@@ -31,7 +31,6 @@ class Admins::AdminsController < Admins::BaseController
   end
 
   def update
-    puts("\n\n\n\n   UPDATE CHEGOU !!!   \n\n\n\n")
     if @admin.update(user_params)
       flash[:success] = t('flash.actions.update.m', resource_name: User.model_name.human)
       redirect_to admins_admins_path
