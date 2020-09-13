@@ -1,5 +1,5 @@
 class Admins::AdminsController < Admins::BaseController
-  before_action :set_admin, only: [:show, :edit, :update, :destroy]
+  before_action :set_admin, only: [:show, :edit, :update, :removeAsAdmin, :destroy]
 
   def index
     @admins = User.includes(:role).where.not(:role_id => nil)
@@ -16,6 +16,16 @@ class Admins::AdminsController < Admins::BaseController
 
   def edit
     @roles = Role.all
+  end
+
+  def removeAsAdmin
+    if @admin.update({role_id: nil })
+      flash[:success] = t('flash.actions.update.m', resource_name: User.model_name.human)
+      redirect_to admins_admins_path
+    else
+      flash[:error] = I18n.t('flash.actions.destroy.user_admin')
+      redirect_to admins_admins_path
+    end
   end
 
   def create    
@@ -52,7 +62,7 @@ class Admins::AdminsController < Admins::BaseController
   private
 
   def set_admin
-    @admin = User.find(params[:id])
+    @admin = User.find(params[:id] || params[:admin_id])
   end
 
   def set_role

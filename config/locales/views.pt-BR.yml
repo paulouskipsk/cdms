@@ -21,6 +21,7 @@ pt-BR:
           sign_in: Clique aqui para acessar a área do usuário
     prompt:
       confirm: Tem certeza?
+      confirm_remove_as_admin: Tem certeza? Ao confirmar este usuário deixará de ser um administrador!
     links:
       back: Voltar
       edit: Editar
@@ -67,6 +68,7 @@ pt-BR:
       edit:
         title: Editar administrador
       links:
+        remove_as_admin: Remover como administrador
         sign_out: Sair
         new: Novo administrador
     user:

@@ -6,7 +6,10 @@ Rails.application.routes.draw do
     namespace :admins do
       root to: 'dashboard#index'
       resources :users
-      resources :admins
+
+      resources :admins do
+        post 'remove_as_admin', to: 'admins#removeAsAdmin', as: 'remove_as_admin'
+      end
       resources :audience_members
       resources :departments do
         resources :department_modules, except: [:index, :show], as: :modules, path: 'modules'
