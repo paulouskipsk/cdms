@@ -36,7 +36,7 @@ class Admins::AdminsController < Admins::BaseController
     else
       flash.now[:error] = I18n.t('flash.actions.errors')
       @roles = Role.all
-      render 'admins/new'
+      render :new
     end
   end
 

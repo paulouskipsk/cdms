@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :role do
     name { 'assistant_administrator' }
-    description { 'Diretor geral' }
+    acronym { 'Diretor geral' }
   end
 end

@@ -18,6 +18,7 @@ class User < ApplicationRecord
 
   def can_destroy?
     role = Role.find_by('acronym': 'dir')
+    return true if role == nil
     throw :abort if role_id == role.id && User.where('role_id': role.id).count == 1
   end
 end
