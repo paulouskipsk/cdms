@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  belongs_to :role
+  belongs_to :role, optional: true
 
   before_destroy :can_destroy?, prepend: true
 
