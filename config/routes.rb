@@ -8,8 +8,12 @@ Rails.application.routes.draw do
       resources :users
 
       resources :admins do
-        post 'remove_as_admin', to: 'admins#removeAsAdmin', as: 'remove_as_admin'
+        post 'remove_as_admin', to: 'admins#remove_as_admin', as: 'remove_as_admin'
       end
+      get 'get_users_non_admin', to: 'admins#get_users_non_admin', as: 'get_users_non_admin'
+      post 'set_user_as_admin', to: 'admins#set_user_as_admin', as: 'set_user_as_admin'
+      patch 'set_user_as_admin', to: 'admins#set_user_as_admin', as: 'edit_user_as_admin'
+
       resources :audience_members
       resources :departments do
         resources :department_modules, except: [:index, :show], as: :modules, path: 'modules'
