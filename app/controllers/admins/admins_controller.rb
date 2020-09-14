@@ -2,7 +2,7 @@ class Admins::AdminsController < Admins::BaseController
   before_action :set_admin, only: [:show, :edit, :update, :remove_as_admin, :destroy]
 
   def index
-    @admins = User.includes(:role).where.not(:role_id => nil)
+    @admins = User.includes(:role).where.not(role_id: nil)
   end
 
   def show
@@ -21,7 +21,7 @@ class Admins::AdminsController < Admins::BaseController
   def remove_as_admin
     begin
       @admin.can_destroy?
-      if @admin.update({role_id: nil })
+      if @admin.update({ role_id: nil })
         flash[:success] = t('flash.actions.update.m', resource_name: User.model_name.human)
         redirect_to admins_admins_path
       else
@@ -37,13 +37,13 @@ class Admins::AdminsController < Admins::BaseController
   def get_users_non_admin
     keyword = params[:keyword]
 
-    users = User.where(:role_id => nil).where("username LIKE ?", "%#{keyword}%")
+    users = User.where(role_id: nil).where('username LIKE ?', "%#{keyword}%")
     render json: { ok: true, users: users }
   end
 
   def set_user_as_admin
     @admin = User.find(params[:user][:id])
-    if @admin.update({role_id: params[:user][:role_id] })
+    if @admin.update({ role_id: params[:user][:role_id] })
       flash[:success] = t('flash.actions.update.m', resource_name: User.model_name.human)
       redirect_to admins_admins_path
     else
@@ -52,7 +52,7 @@ class Admins::AdminsController < Admins::BaseController
     end
   end
 
-  def create    
+  def create
     @admin = User.new(user_params)
     if @admin.save
       flash[:success] = t('flash.actions.create.m', resource_name: User.model_name.human)
