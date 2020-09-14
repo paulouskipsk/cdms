@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
       resources :admins do
         post 'remove_as_admin', to: 'admins#remove_as_admin', as: 'remove_as_admin'
+        get 'edit_user_admin', to: 'admins#edit_user', as: 'edit_user_admin'
       end
       get 'get_users_non_admin', to: 'admins#get_users_non_admin', as: 'get_users_non_admin'
       post 'set_user_as_admin', to: 'admins#set_user_as_admin', as: 'set_user_as_admin'

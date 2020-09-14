@@ -1,5 +1,5 @@
 class Admins::AdminsController < Admins::BaseController
-  before_action :set_admin, only: [:show, :edit, :update, :remove_as_admin, :destroy]
+  before_action :set_admin, only: [:show, :edit, :edit_user, :update, :remove_as_admin, :destroy]
 
   def index
     @admins = User.includes(:role).where.not(role_id: nil)
@@ -16,6 +16,11 @@ class Admins::AdminsController < Admins::BaseController
 
   def edit
     @roles = Role.all
+  end
+
+  def edit_user
+    @roles = Role.all
+    render 'edit-user'
   end
 
   def remove_as_admin

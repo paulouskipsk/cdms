@@ -72,6 +72,7 @@ pt-BR:
         sign_out: Sair
         submit: Adicionar administrador
         new: Novo administrador
+        edit: Editar administrador
     user:
       name:
         singular: Usuário
