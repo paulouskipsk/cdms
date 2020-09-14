@@ -1,4 +1,4 @@
-<input type="hidden" id="search-path" value="<%= admins_get_users_non_admin_path %>">
+<input type="hidden" id="search-path" value="<%= admins_users_non_admin_path %>">
 
 <%= simple_form_for @admin, :url => admins_set_user_as_admin_path, html: {autocomplete: 'off'} do |f| %>
   <%= f.input :id, :as => :hidden, wrapper_html: {class: 'user_id'} %>

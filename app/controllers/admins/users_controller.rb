@@ -2,7 +2,7 @@ class Admins::UsersController < Admins::BaseController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.where(:role_id => nil)
+    @users = User.where(role_id: nil)
   end
 
   def show; end
@@ -14,8 +14,6 @@ class Admins::UsersController < Admins::BaseController
   def edit; end
 
   def create
-    puts("\n\n\nchegou no usuario\n\n\n")
-
     @user = User.new(user_params)
     if @user.save
       flash[:success] = t('flash.actions.create.m', resource_name: User.model_name.human)
