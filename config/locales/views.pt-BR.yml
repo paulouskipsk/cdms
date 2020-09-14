@@ -70,6 +70,7 @@ pt-BR:
       links:
         remove_as_admin: Remover como administrador
         sign_out: Sair
+        submit: Adicionar administrador
         new: Novo administrador
     user:
       name:
