@@ -28,21 +28,19 @@ class Admins::AdminsController < Admins::BaseController
       @admin.can_destroy?
       if @admin.update({ role_id: nil })
         flash[:success] = t('flash.actions.update.m', resource_name: User.model_name.human)
-        redirect_to admins_admins_path
       else
         flash[:error] = I18n.t('flash.actions.destroy.user_admin')
-        redirect_to admins_admins_path
       end
     rescue
       flash[:error] = I18n.t('flash.actions.destroy.user_admin')
-      redirect_to admins_admins_path
     end
+    redirect_to admins_admins_path
   end
 
-  def get_users_non_admin
+  def users_non_admin
     keyword = params[:keyword]
 
-    users = User.where(role_id: nil).where('username LIKE ?', "%#{keyword}%")
+    users = User.where(role_id: nil).where("username LIKE %#{keyword}%")
     render json: { ok: true, users: users }
   end
 
@@ -50,11 +48,10 @@ class Admins::AdminsController < Admins::BaseController
     @admin = User.find(params[:user][:id])
     if @admin.update({ role_id: params[:user][:role_id] })
       flash[:success] = t('flash.actions.update.m', resource_name: User.model_name.human)
-      redirect_to admins_admins_path
     else
       flash[:error] = I18n.t('flash.actions.destroy.user_admin')
-      redirect_to admins_admins_path
     end
+    redirect_to admins_admins_path
   end
 
   def create
