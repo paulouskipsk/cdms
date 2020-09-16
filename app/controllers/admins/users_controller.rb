@@ -2,7 +2,7 @@ class Admins::UsersController < Admins::BaseController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users = User.where(role_id: nil)
+    @users = User.all
   end
 
   def show; end

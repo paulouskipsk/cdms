@@ -9,9 +9,6 @@
     <%= link_to edit_admins_admin_path(admin) do %>
       <%= icon('fas', 'edit', class: 'icon', data: { toggle: 'tooltip' }, title: t('views.links.edit')) %>
     <% end %>
-    <%= link_to admins_admin_path(admin), method: :delete, data: { confirm: t('views.prompt.confirm') } do %>
-      <%= icon('fas', 'trash', class: 'icon', data: { toggle: 'tooltip' }, title: t('views.links.destroy')) %>
-    <% end %>
     <%= link_to admins_admin_remove_as_admin_path(admin), method: :post, data: { confirm: t('views.prompt.confirm_remove_as_admin') } do %>
       <%= icon('fas', 'user-times', class: 'icon', data: { toggle: 'tooltip' }, title: t('views.admin.links.remove_as_admin')) %>
     <% end %>
