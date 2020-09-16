@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   belongs_to :role, optional: true
 
-  before_destroy :can_destroy?, prepend: true
+  before_destroy :can_unlink_administrator?, prepend: true
 
   mount_uploader :avatar, AvatarUploader
 
@@ -16,7 +16,7 @@ class User < ApplicationRecord
     self.email = "#{username}@utfpr.edu.br"
   end
 
-  def can_destroy?
+  def can_unlink_administrator?
     role = Role.find_by('acronym': 'dir')
     return true if role.nil?
 
