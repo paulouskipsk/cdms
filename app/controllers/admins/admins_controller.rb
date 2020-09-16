@@ -1,12 +1,8 @@
 class Admins::AdminsController < Admins::BaseController
-  before_action :set_admin, only: [:show, :edit, :edit_user, :update, :remove_as_admin, :destroy]
+  before_action :set_admin, only: [:edit, :update, :remove_as_admin, :destroy]
 
   def index
     @admins = User.includes(:role).where.not(role_id: nil)
-  end
-
-  def show
-    set_role
   end
 
   def new
@@ -18,15 +14,10 @@ class Admins::AdminsController < Admins::BaseController
     @roles = Role.all
   end
 
-  def edit_user
-    @roles = Role.all
-    render 'edit-user'
-  end
-
   def remove_as_admin
     begin
       @admin.can_destroy?
-      if @admin.update({ role_id: nil })
+      if @admin.update({role_id: nil})
         flash[:success] = t('flash.actions.update.m', resource_name: User.model_name.human)
       else
         flash[:error] = I18n.t('flash.actions.destroy.user_admin')
@@ -41,14 +32,19 @@ class Admins::AdminsController < Admins::BaseController
     keyword = params[:keyword]
 
     users = User.where(:role_id => nil).where("username LIKE ?", "%#{keyword}%")
-    render json: { ok: true, users: users }
+    render json: {ok: true, users: users}
   end
 
   def set_user_as_admin
     @admin = User.find(params[:user][:id])
-    if @admin.update({ role_id: params[:user][:role_id] })
-      flash[:success] = t('flash.actions.update.m', resource_name: User.model_name.human)
-    else
+    begin
+      @admin.can_destroy?
+      if @admin.update({role_id: params[:user][:role_id]})
+        flash[:success] = t('flash.actions.update.m', resource_name: User.model_name.human)
+      else
+        flash[:error] = I18n.t('flash.actions.destroy.user_admin')
+      end
+    rescue
       flash[:error] = I18n.t('flash.actions.destroy.user_admin')
     end
     redirect_to admins_admins_path
