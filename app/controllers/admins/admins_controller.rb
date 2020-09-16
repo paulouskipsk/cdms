@@ -1,6 +1,8 @@
 class Admins::AdminsController < Admins::BaseController
   before_action :set_admin, only: [:edit, :remove_as_admin]
 
+  include AdminHelper
+
   def index
     @admins = User.includes(:role).where.not(role_id: nil)
   end
@@ -15,12 +17,12 @@ class Admins::AdminsController < Admins::BaseController
   end
 
   def remove_as_admin
-    @admin.can_unlink_administrator?
-    if @admin.update({ role_id: nil })
+    if remove_admin(@admin)
       flash[:success] = t('flash.actions.update.m', resource_name: User.model_name.human)
     else
       flash[:error] = I18n.t('flash.actions.destroy.user_admin')
     end
+    redirect_to admins_admins_path
   rescue StandartError
     flash[:error] = I18n.t('flash.actions.destroy.user_admin')
     redirect_to admins_admins_path
@@ -34,15 +36,11 @@ class Admins::AdminsController < Admins::BaseController
   end
 
   def set_user_as_admin
-    @admin = User.find(params[:user][:id])
-    @admin.can_unlink_administrator?
-    if @admin.update({ role_id: params[:user][:role_id] })
+    if user_as_admin(params)
       flash[:success] = t('flash.actions.update.m', resource_name: User.model_name.human)
     else
       flash[:error] = I18n.t('flash.actions.destroy.user_admin')
     end
-  rescue StandartError
-    flash[:error] = I18n.t('flash.actions.destroy.user_admin')
     redirect_to admins_admins_path
   end
 
