@@ -11,14 +11,9 @@ class Admins::AdminsControllerTest < ActionDispatch::IntegrationTest
       get admins_admins_path
       assert_response :success
     end
-
+ 
     should 'get new' do
       get new_admins_admin_path
-      assert_response :success
-    end
-
-    should 'get show' do
-      get admins_admin_path(@user)
       assert_response :success
     end
 
@@ -27,56 +22,12 @@ class Admins::AdminsControllerTest < ActionDispatch::IntegrationTest
       assert_response :success
     end
 
-    context '#create' do
-      should 'successfully' do
-        assert_difference('User.count', 1) do
-          post admins_admins_path, params: { user: attributes_for(:user) }
-        end
-        assert_redirected_to admins_admins_path
-        assert_equal I18n.t('flash.actions.create.m', resource_name: User.model_name.human),
-                     flash[:success]
-      end
-
-      should 'unsuccessfully' do
-        assert_no_difference('User.count') do
-          post admins_admins_path, params: { user: attributes_for(:user, username: '') }
-        end
-
-        assert_response :success
-        assert_equal I18n.t('flash.actions.errors'), flash[:error]
-      end
-    end
-
-    context '#update' do
-      should 'successfully' do
-        patch admins_admin_path(@user), params: { user: { name: 'updated' } }
-        assert_redirected_to admins_admins_path
-        assert_equal I18n.t('flash.actions.update.m', resource_name: User.model_name.human),
-                     flash[:success]
-        @user.reload
-        assert_equal 'updated', @user.name
-      end
-
-      should 'unsuccessfully' do
-        patch admins_admin_path(@user), params: { user: { name: '' } }
-        assert_response :success
-        assert_equal I18n.t('flash.actions.errors'), flash[:error]
-
-        name = @user.name
-        @user.reload
-        assert_equal name, @user.name
-      end
-    end
-
-    should 'destroy' do
-      assert_difference('User.count', -1) do
-        delete admins_admin_path(@user)
-      end
-
-      assert_redirected_to admins_admins_path
+    should 'get remove as admin' do
+      get admins_admins_path
+      assert_response :success
     end
   end
-
+  
   context 'unauthenticated' do
     should 'redirect to login' do
       requests = {

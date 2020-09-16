@@ -66,4 +66,21 @@ class UserTest < ActiveSupport::TestCase
       assert_equal('guest@utfpr.edu.br', @user.email)
     end
   end
+
+  context 'unlink administrator' do
+    setup do
+      @user = build(:user)
+    end
+
+    should 'permit unlink administrator' do
+      assert_equal(true, @user.can_unlink_administrator?)
+    end
+
+    should 'not permit unlink administrator' do
+      role = build(:role) 
+      user = create(:user, role: role)
+      assert_throws(:abort) { user.can_unlink_administrator? }
+    end
+  end
+
 end

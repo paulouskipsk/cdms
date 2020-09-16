@@ -22,7 +22,7 @@ class Admins::AdminsController < Admins::BaseController
       else
         flash[:error] = I18n.t('flash.actions.destroy.user_admin')
       end
-    rescue StandartError
+    rescue StandardError
       flash[:error] = I18n.t('flash.actions.destroy.user_admin')
     end
     redirect_to admins_admins_path
@@ -44,7 +44,7 @@ class Admins::AdminsController < Admins::BaseController
       else
         flash[:error] = I18n.t('flash.actions.destroy.user_admin')
       end
-    rescue StandartError
+    rescue StandardError
       flash[:error] = I18n.t('flash.actions.destroy.user_admin')
     end
     redirect_to admins_admins_path
