@@ -11,7 +11,7 @@ class Admins::AdminsControllerTest < ActionDispatch::IntegrationTest
       get admins_admins_path
       assert_response :success
     end
- 
+
     should 'get new' do
       get new_admins_admin_path
       assert_response :success
@@ -27,7 +27,7 @@ class Admins::AdminsControllerTest < ActionDispatch::IntegrationTest
       assert_response :success
     end
   end
-  
+
   context 'unauthenticated' do
     should 'redirect to login' do
       requests = {
