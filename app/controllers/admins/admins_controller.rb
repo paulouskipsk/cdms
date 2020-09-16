@@ -40,7 +40,7 @@ class Admins::AdminsController < Admins::BaseController
   def users_non_admin
     keyword = params[:keyword]
 
-    users = User.where(role_id: nil).where("username LIKE %#{keyword}%")
+    users = User.where(:role_id => nil).where("username LIKE ?", "%#{keyword}%")
     render json: { ok: true, users: users }
   end
 
