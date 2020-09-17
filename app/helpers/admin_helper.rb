@@ -6,14 +6,14 @@ module AdminHelper
     return true if admin.update({ role_id: role_id })
 
     false
-  rescue StandartError
+  rescue StandardError
     false
   end
 
   def remove_admin(admin)
     admin.can_unlink_administrator?
     admin.update({ role_id: nil })
-  rescue StandartError
+  rescue StandardError
     false
   end
 end

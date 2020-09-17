@@ -11,7 +11,7 @@ pt-BR:
         m: '%{resource_name} removido com sucesso!'
         f: '%{resource_name} removida com sucesso!'
         bond: Não é possível remover %{resource_name} com vínculos!'
-        user_admin: 'Não foi possível remover, pois não há outro administrador cadastrado!'
+        user_admin: 'Não foi possível alterar/remover, pois não há outro administrador cadastrado!'
       errors: Existem dados incorretos!
     not_authorized: Acesso não autorizado!
     not_found: Registro não encontrado!
