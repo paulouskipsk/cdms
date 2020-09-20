@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  devise :database_authenticatable,
+         :recoverable, :rememberable, :validatable
+
   belongs_to :role, optional: true
 
   before_destroy :can_unlink_administrator?, prepend: true

@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root to: 'home#index'
 
-  devise_for :admins
-  authenticate :admin do
+  devise_for :users
+  authenticate :user do
     namespace :admins do
       root to: 'dashboard#index'
       resources :users
@@ -21,8 +21,9 @@ Rails.application.routes.draw do
     end
   end
 
-  as :admin do
-    get 'admins/edit', to: 'admins/registrations#edit', as: 'edit_admin_registration'
-    put 'admins/edit', to: 'admins/registrations#update', as: 'admin_registration'
-  end
+  # as :admin do
+  #   get 'admins/edit', to: 'admins/registrations#edit', as: 'edit_admin_registration'
+  #   put 'admins/edit', to: 'admins/registrations#update', as: 'admin_registration'
+  # end
+
 end
