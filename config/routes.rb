@@ -19,6 +19,10 @@ Rails.application.routes.draw do
         resources :department_modules, except: [:index, :show], as: :modules, path: 'modules'
       end
     end
+
+    namespace :users do
+      root to: 'dashboard#index'
+    end
   end
 
   # as :admin do

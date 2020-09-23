@@ -50,7 +50,7 @@ class EditAudienceMemberTest < ApplicationSystemTestCase
   context 'when user is not authenticated' do
     should 'redirect to login page' do
       visit admins_edit_audience_member_path(1)
-      assert_current_path new_admin_session_path
+      assert_current_path new_user_session_path
     end
   end
 end

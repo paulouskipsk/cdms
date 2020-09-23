@@ -83,7 +83,7 @@ class Admins::DepartmentModulesControllerTest < ActionDispatch::IntegrationTest
       requests.each do |method, routes|
         routes.each do |route|
           send(method, route)
-          assert_redirected_to new_admin_session_path
+          assert_redirected_to new_user_session_path
         end
       end
     end
