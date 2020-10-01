@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def after_sign_in_path_for(*)
-    admins_root_path
+    current_user.is?(:admin) ? admins_root_path : users_root_path
   end
 
   def after_sign_out_path_for(*)

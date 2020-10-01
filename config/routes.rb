@@ -27,8 +27,7 @@ Rails.application.routes.draw do
     end
   end
 
-  as :admin do
-    get 'admins/edit', to: 'admins/registrations#edit', as: 'edit_admin_registration'
-    put 'admins/edit', to: 'admins/registrations#update', as: 'admin_registration'
+  namespace :users do
+    root to: 'dashboard#index'
   end
 end

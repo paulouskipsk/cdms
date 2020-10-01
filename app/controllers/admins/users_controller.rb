@@ -16,6 +16,10 @@ class Admins::UsersController < Admins::BaseController
 
   def create
     @user = User.new(user_params)
+    pass = Random.rand(100000000...999999999)
+    @user.password = pass
+    @user.password_confirmation = pass
+    
     if @user.save
       flash[:success] = t('flash.actions.create.m', resource_name: User.model_name.human)
       redirect_to admins_users_path
