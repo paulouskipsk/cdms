@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  devise :database_authenticatable,
+         :recoverable, :rememberable, :validatable
+         
   before_destroy :can_destroy?
 
   has_many :department_users, dependent: :destroy

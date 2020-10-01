@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   root to: 'home#index'
 
-  devise_for :admins
-  authenticate :admin do
+  devise_for :users
+
+  authenticate :user do
     namespace :admins do
       root to: 'dashboard#index'
       resources :users
