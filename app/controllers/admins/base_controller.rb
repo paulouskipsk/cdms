@@ -6,9 +6,11 @@ class Admins::BaseController < ActionController::Base
   add_breadcrumb I18n.t('views.breadcrumbs.home'), :admins_root_path
 
   def verify_user_access
-    unless current_user.is?(:admin)
-      flash[:error] = I18n.t('flash.not_authorized')
-      redirect_to users_root_path 
-    end
+    access_unauthorized unless current_user.is?(:admin)
+  end
+
+  def access_unauthorized
+    flash[:error] = I18n.t('flash.not_authorized')
+    redirect_to users_root_path
   end
 end

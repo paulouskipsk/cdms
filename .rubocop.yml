@@ -13,6 +13,8 @@ AllCops:
     - 'vendor/**/*'
     - 'bin/*'
     - 'db/schema.rb'
+    - 'db/seeds.rb'
+    - 'db/migrate/20200930232953_add_devise_fields_to_user.rb'
     - 'config/puma.rb'
     - 'config/initializers/simple_form.rb'
     - 'config/initializers/simple_form_bootstrap.rb'
@@ -20,6 +22,7 @@ AllCops:
     - 'config/initializers/backtrace_silencers.rb'
     - 'config/initializers/content_security_policy.rb'
     - 'config/environments/production.rb'
+    - 'app/controllers/users/base_controller.rb'
 
 Style/Documentation:
   Enabled: false

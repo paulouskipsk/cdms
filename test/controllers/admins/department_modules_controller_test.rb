@@ -5,7 +5,8 @@ class Admins::DepartmentModulesControllerTest < ActionDispatch::IntegrationTest
     setup do
       @module = create(:department_module)
       @department = @module.department
-      sign_in create(:admin)
+      @user = create(:user)
+      sign_in create(:user, :manager)
     end
 
     teardown do
@@ -120,7 +121,7 @@ class Admins::DepartmentModulesControllerTest < ActionDispatch::IntegrationTest
       requests.each do |method, routes|
         routes.each do |route|
           send(method, route)
-          assert_redirected_to new_admin_session_path
+          assert_redirected_to new_user_session_path
         end
       end
     end

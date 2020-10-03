@@ -4,31 +4,31 @@ class Admins::UsersControllerTest < ActionDispatch::IntegrationTest
   context 'authenticated' do
     setup do
       @user = create(:user)
-      sign_in create(:admin)
-    end
-
-    teardown do
-      assert_active_link(href: admins_users_path)
+      sign_in create(:user, :manager)
     end
 
     should 'get index' do
       get admins_users_path
       assert_response :success
+      assert_active_link(href: admins_users_path)
     end
 
     should 'get new' do
       get new_admins_user_path
       assert_response :success
+      assert_active_link(href: admins_users_path)
     end
 
     should 'get show' do
       get admins_user_path(@user)
       assert_response :success
+      assert_active_link(href: admins_users_path)
     end
 
     should 'get edit' do
       get edit_admins_user_path(@user)
       assert_response :success
+      assert_active_link(href: admins_users_path)
     end
 
     context '#create' do
@@ -39,7 +39,6 @@ class Admins::UsersControllerTest < ActionDispatch::IntegrationTest
         assert_redirected_to admins_users_path
         assert_equal I18n.t('flash.actions.create.m', resource_name: User.model_name.human),
                      flash[:success]
-        follow_redirect!
       end
 
       should 'unsuccessfully' do
@@ -60,7 +59,6 @@ class Admins::UsersControllerTest < ActionDispatch::IntegrationTest
                      flash[:success]
         @user.reload
         assert_equal 'updated', @user.name
-        follow_redirect!
       end
 
       should 'unsuccessfully' do
@@ -78,9 +76,7 @@ class Admins::UsersControllerTest < ActionDispatch::IntegrationTest
       assert_difference('User.count', -1) do
         delete admins_user_path(@user)
       end
-
       assert_redirected_to admins_users_path
-      follow_redirect!
     end
   end
 
@@ -97,7 +93,7 @@ class Admins::UsersControllerTest < ActionDispatch::IntegrationTest
       requests.each do |method, routes|
         routes.each do |route|
           send(method, route)
-          assert_redirected_to new_admin_session_path
+          assert_redirected_to new_user_session_path
         end
       end
     end

@@ -1,9 +1,10 @@
 require 'test_helper'
 
 class Admins::AdministratorsControllerTest < ActionDispatch::IntegrationTest
-  context 'authenticated' do
+  context 'authenticated_with_manager' do
     setup do
-      sign_in create(:admin)
+      @user = create(:user)
+      sign_in create(:user, :manager)
     end
 
     should 'get index' do
@@ -40,13 +41,20 @@ class Admins::AdministratorsControllerTest < ActionDispatch::IntegrationTest
       should 'successfully' do
         user = FactoryBot.create(:user, :assistant)
         delete admins_administrator_path(user)
-
         user.reload
         assert_not user.is?(:admin)
         assert_not user.is?(:assistant)
         assert_redirected_to admins_administrators_path
       end
+    end
+  end
 
+  context 'authenticated_with_assistant' do
+    setup do
+      sign_in create(:user, :assistant)
+    end
+
+    context '#destroy' do
       should 'unsuccessfully' do
         user = FactoryBot.create(:user, :manager)
         delete admins_administrator_path(user)
@@ -72,7 +80,7 @@ class Admins::AdministratorsControllerTest < ActionDispatch::IntegrationTest
       requests.each do |method, routes|
         routes.each do |route|
           send(method, route)
-          assert_redirected_to new_admin_session_path
+          assert_redirected_to new_user_session_path
         end
       end
     end

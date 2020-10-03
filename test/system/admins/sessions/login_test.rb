@@ -5,7 +5,7 @@ class LoginTest < ApplicationSystemTestCase
     should 'displays flash and admins profile link and sign out' do
       admin = create(:admin)
 
-      visit new_admin_session_path
+      visit new_user_session_path
 
       fill_in 'admin_email', with: admin.email
       fill_in 'admin_password', with: 'password'
@@ -26,11 +26,11 @@ class LoginTest < ApplicationSystemTestCase
 
   context 'unsuccess login' do
     should 'displays alert warning' do
-      visit new_admin_session_path
+      visit new_user_session_path
 
       click_on I18n.t('views.session.new.submit')
 
-      assert_current_path(new_admin_session_path)
+      assert_current_path(new_user_session_path)
 
       attribute_name = Admin.human_attribute_name(:email)
       assert_selector 'div.alert.alert-warning',
@@ -42,7 +42,7 @@ class LoginTest < ApplicationSystemTestCase
     should 'redirect to login page' do
       visit admins_root_path
 
-      assert_current_path(new_admin_session_path)
+      assert_current_path(new_user_session_path)
       assert_selector 'div.alert.alert-warning', text: I18n.t('devise.failure.unauthenticated')
     end
   end
