@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  include Searchable
+  search_by :name
+
   before_destroy :can_destroy?
 
   has_many :department_users, dependent: :destroy
