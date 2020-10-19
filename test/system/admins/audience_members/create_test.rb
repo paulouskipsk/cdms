@@ -4,7 +4,7 @@ class CreateTest < ApplicationSystemTestCase
   context 'create' do
     setup do
       admin = create(:admin)
-      login_as(admin, as: :admin)
+      login_as(admin, scope: :admin)
       visit new_admins_audience_member_path
     end
 
@@ -14,6 +14,7 @@ class CreateTest < ApplicationSystemTestCase
       fill_in 'audience_member_name', with: audience_member.name
       fill_in 'audience_member_email', with: audience_member.email
       fill_in 'audience_member_cpf', with: audience_member.cpf
+
       submit_form
 
       flash_message = I18n.t('flash.actions.create.m', resource_name: audience_member.model_name.human)

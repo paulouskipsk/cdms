@@ -1,9 +1,7 @@
 <% provide(:head_title, I18n.t('activerecord.models.audience_member.other')) %>
 <% provide(:page_title, I18n.t('activerecord.models.audience_member.other')) %>
 
-<%= render 'shared/search_and_new', new_path: new_admins_audience_member_path,
-                                    new_link: 'views.audience_member.links.new',
-                                    search_path: search_admins_audience_members_path %>
+<%= render 'index_header' %>
 
 <div class="text-right mb-4">
   <%= page_entries_info @audience_members %>

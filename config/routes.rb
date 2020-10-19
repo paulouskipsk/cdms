@@ -19,6 +19,8 @@ Rails.application.routes.draw do
                                             as: 'search_non_administrators'
 
       resources :audience_members, constraints: { id: /[0-9]+/ }, concerns: [:paginatable, :searchable_paginatable]
+      get 'audience_members/from-csv', to: 'audience_members#from_csv', as: :new_audience_members_from_csv
+      post 'audience_members/from-csv', to: 'audience_members#create_from_csv', as: :create_audience_members_from_csv
 
       resources :departments, constraints: { id: /[0-9]+/ }, concerns: [:paginatable, :searchable_paginatable] do
         resources :department_modules, except: [:index, :show], as: :modules, path: 'modules'
