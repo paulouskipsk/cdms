@@ -15,10 +15,8 @@ pt-BR:
       choose: Procurar...
     tooltips:
       home:
-        admin:
-          sign_in: Clique aqui para acessar a área administrativa
         user:
-          sign_in: Clique aqui para acessar a área do usuário
+          sign_in: Clique aqui para acessar como usuário
     prompt:
       confirm: Tem certeza?
       select:
@@ -30,10 +28,10 @@ pt-BR:
       destroy: Deletar
       show: Visualizar
       home:
-        admin:
-          sign_in: Acessar a área do administrativa
+        audience_member:
+          sign_in: Acessar como membro de audiência
         user:
-          sign_in: Acessar a área do usuário
+          sign_in: Acessar como usuário
     search:
       placeholder: Procurar...
     session:
@@ -65,6 +63,7 @@ pt-BR:
         plural:  Administradores
       links:
         sign_out: Sair
+        access: Área administrativa
     user:
       name:
         singular: Usuário
@@ -76,7 +75,9 @@ pt-BR:
       edit:
         title: Editar usuário
       links:
+        sign_out: Sair
         new: Novo usuário
+        access: Área do usuário
     department:
       name:
         singular: Departamento
@@ -101,7 +102,7 @@ pt-BR:
     audience_member:
       name:
         singular: Membro de audiência
-        plural:  Membros de audiência
+        plural:  Membros de audiências
       import:
         registered: Membros de audiência registrados
         already_registered: Membros de audiência já registrados

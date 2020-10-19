@@ -26,6 +26,8 @@ class Admins::UsersController < Admins::BaseController
   end
 
   def update
+    remove_empty_password
+
     if @user.update(user_params)
       flash[:success] = t('flash.actions.update.m', resource_name: User.model_name.human)
       redirect_to admins_users_path
@@ -46,11 +48,19 @@ class Admins::UsersController < Admins::BaseController
 
   private
 
+  def remove_empty_password
+    return if params[:user][:password].present?
+
+    params[:user].delete(:password)
+    params[:user].delete(:password_confirmation)
+  end
+
   def set_user
     @user = User.find(params[:id])
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :username, :register_number, :cpf, :active, :avatar)
+    params.require(:user).permit(:name, :email, :username, :register_number,
+                                 :cpf, :active, :avatar, :password, :password_confirmation)
   end
 end

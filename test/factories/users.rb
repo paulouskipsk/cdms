@@ -6,6 +6,8 @@ FactoryBot.define do
     cpf { CPF.generate(true) }
     active { false }
     role { nil }
+    password { 'password' }
+    password_confirmation { 'password' }
   end
 
   trait :manager do

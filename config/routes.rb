@@ -1,8 +1,17 @@
 Rails.application.routes.draw do
   root to: 'home#index'
 
-  devise_for :admins
-  authenticate :admin do
+  devise_for :users
+  as :user do
+    get 'users/edit', to: 'users/registrations#edit', as: 'edit_user_registration'
+    put 'users/edit', to: 'users/registrations#update', as: 'user_registration'
+  end
+
+  authenticate :user do
+    namespace :users do
+      root to: 'dashboard#index'
+    end
+
     namespace :admins do
       root to: 'dashboard#index'
 
@@ -34,10 +43,5 @@ Rails.application.routes.draw do
         delete '/members/:id', to: 'departments#remove_member', as: 'remove_member'
       end
     end
-  end
-
-  as :admin do
-    get 'admins/edit', to: 'admins/registrations#edit', as: 'edit_admin_registration'
-    put 'admins/edit', to: 'admins/registrations#update', as: 'admin_registration'
   end
 end

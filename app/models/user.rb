@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  devise :database_authenticatable,
+         :recoverable, :rememberable, :validatable
+
   include Searchable
   search_by :name
 
