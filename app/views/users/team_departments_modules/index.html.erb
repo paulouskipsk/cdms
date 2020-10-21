@@ -1,0 +1,37 @@
+<% provide(:head_title, 'Departamentos e módulos') %>
+<% provide(:page_title, 'Departamentos e módulos') %>
+
+<h1>Departamentos</h1>
+ <%=
+    @departments.each do |x|
+      puts x
+    end
+ %>
+<br/><br/>
+
+<h1>Modulos</h1>
+ <%=
+    @modules.each do |x|
+      puts x
+    end
+ %> 
+
+
+<div class="table-responsive">
+  <table class="table card-table table-striped table-vcenter table-options">
+    <thead>
+        <tr>
+            <th><%= t("views.department.name.singular") %></th>
+            <th>Cargo</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+       <%
+=begin%>
+ <%= render partial: "department_user", collection: @departmentUser %> 
+<%
+=end%>
+    </tbody>
+  </table>
+</div>

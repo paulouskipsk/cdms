@@ -1,0 +1,17 @@
+<tr class="department">
+    <td>  
+        <%= link_to admins_department_path(department_user.department) do %>
+            <%= department_user.department.name %>
+        <% end %>
+    </td>
+    <td><%= t("enums.roles.#{department_user.role}") %></td>
+    <td data-identifier="dep<%= department_user.department.id %>" class="w-1 selected"><i class="fas fa-chevron-right"></i></td>
+</tr>
+
+<% (1..5).each do |element| %>
+    <tr data-identifier=<%= "child-dep#{department_user.department.id}" %> class="hide">
+        <td><%= "modulo #{element}" %></td>
+        <td><%= t("enums.roles.#{department_user.role}") %></td>
+        <td></td>
+    </tr>
+<% end %>

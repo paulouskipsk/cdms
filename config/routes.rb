@@ -29,5 +29,6 @@ Rails.application.routes.draw do
 
   namespace :users do
     root to: 'dashboard#index'
+     get 'team-departments-modules', controller: 'team_departments_modules', action: 'index', as: 'team_departments_modules'
   end
 end
