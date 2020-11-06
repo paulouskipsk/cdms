@@ -10,6 +10,16 @@ Rails.application.routes.draw do
   authenticate :user do
     namespace :users do
       root to: 'dashboard#index'
+
+      concern :paginatable do
+        get '(page/:page)', action: :index, on: :collection, as: ''
+      end
+      concern :searchable_paginatable do
+        get '/search/(:term)/(page/:page)', action: :index, on: :collection, as: :search
+      end
+
+      resources :documents, concerns: [:paginatable, :searchable_paginatable]
+      get 'documents/:id/preview', to: 'documents#preview', as: 'preview_document'
     end
 
     namespace :admins do
