@@ -9,8 +9,6 @@ Rails.application.routes.draw do
 
   authenticate :user do
     namespace :users do
-      root to: 'dashboard#index'
-
       concern :paginatable do
         get '(page/:page)', action: :index, on: :collection, as: ''
       end
@@ -18,8 +16,15 @@ Rails.application.routes.draw do
         get '/search/(:term)/(page/:page)', action: :index, on: :collection, as: :search
       end
 
+      root to: 'dashboard#index'
+
       resources :documents, concerns: [:paginatable, :searchable_paginatable]
       get 'documents/:id/preview', to: 'documents#preview', as: 'preview_document'
+
+      get 'team-departments-modules', to: 'team_departments_modules#index', action: :index
+      get 'show-department/:id', to: 'team_departments_modules#show_department',
+                                 action: :show_department, as: 'show_department'
+      get 'show-module/:id', to: 'team_departments_modules#show_module', action: :show_module, as: 'show_module'
     end
 
     namespace :admins do
