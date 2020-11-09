@@ -1,0 +1,32 @@
+<% provide(:head_title, t('views.user.name.plural')) %>
+<% provide(:page_title, t('views.user.name.plural')) %>
+
+<%= render 'shared/search_and_new', new_path: new_admins_user_path,
+                                    new_link: 'views.user.links.new',
+                                    search_path: search_admins_users_path %>
+
+<div class="text-right mb-4">
+  <%= page_entries_info @users %>
+</div>
+
+<div class="table-responsive dataTables_wrapper">
+  <table class="table card-table table-striped table-vcenter table-options">
+    <thead>
+      <tr>
+        <th><%= User.human_attribute_name(:name) %></th>
+        <th><%= User.human_attribute_name(:email) %></th>
+        <th><%= User.human_attribute_name(:username) %></th>
+        <th><%= User.human_attribute_name(:register_number) %></th>
+        <th><%= User.human_attribute_name(:cpf) %></th>
+        <th><%= User.human_attribute_name(:active) %></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= render @users %>
+    </tbody>
+  </table>
+
+  <%= paginate @users %>
+</div>

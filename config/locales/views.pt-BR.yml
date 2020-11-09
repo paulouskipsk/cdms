@@ -3,22 +3,38 @@ pt-BR:
     app:
       title: SGCD
       name: Sistema Gerenciador de Certificados e Declarações da UTFPR-GP
+      sidebar:
+        audience_members: Membros de audiência
+        documents: Certificados e declarações
     boolean:
       'true': Sim
       'false': Não
+    status:
+      true: Ativo
+      false: Inativo
+    file:
+      choose: Procurar...
     tooltips:
       home:
-        admin:
-          sign_in: Clique aqui para acessar a área administrativa
         user:
-          sign_in: Clique aqui para acessar a área do usuário
+          sign_in: Clique aqui para acessar como usuário
+    prompt:
+      confirm: Tem certeza?
+      select:
+        m: 'Selecione um %{name}'
+        f: 'Selecione uma %{name}'
     links:
       back: Voltar
+      edit: Editar
+      destroy: Deletar
+      show: Visualizar
       home:
-        admin:
-          sign_in: Acessar a área do administrativa
+        audience_member:
+          sign_in: Acessar como membro de audiência
         user:
-          sign_in: Acessar a área do usuário
+          sign_in: Acessar como usuário
+    search:
+      placeholder: Procurar...
     session:
       new:
         head_title: Entrar
@@ -48,8 +64,79 @@ pt-BR:
         plural:  Administradores
       links:
         sign_out: Sair
+        access: Área administrativa
     user:
       name:
         singular: Usuário
         plural:  Usuários
+      new:
+        title: Novo usuário
+      show:
+        title: Visualizar usuário
+      edit:
+        title: Editar usuário
+      links:
+        sign_out: Sair
+        new: Novo usuário
+        access: Área do usuário
+    document:
+      links:
+        new: Novo certificado/declaração
+        show: Visualizar certificado/declaração
+        preview: '%{category}-%{name}'
+      name:
+        singular: Documento
+        plural:  Documentos
+      print_label: Para imprimir ou salvar como PDF aperte CTRL + P ou clique no botão ao lado.
+    department:
+      name:
+        singular: Departamento
+        plural:  Departamentos
+      links:
+        new: Novo departamento
+        edit: Editar departamento
+        show: Visualizar departamento
+      members:
+        name: Membros
+        nwdp: 'Membros do departamento %{name}'
+    department_module:
+      name:
+        singular: Módulo departamento
+        plural: Módulos departamento
+      links:
+        new: Novo módulo
+        show: Visualizar módulo
+      new:
+        title: 'Novo módulo para o departamento #%{dp}'
+      edit:
+        title: 'Editar módulo do departamento #%{dp}'
+    audience_member:
+      name:
+        singular: Membro de audiência
+        plural:  Membros de audiências
+      import:
+        registered: Membros de audiência registrados
+        already_registered: Membros de audiência já registrados
+        duplicates: Membros de audiência duplicados no cvs
+        invalids: Membros de audiência inválidos
+        btn_csv: Importar CSV
+        btn_download_sample_file: Baixar arquivo de exemplo
+        extension_invalid: 'Extensão inválida'
+      links:
+        new: Novo membro de audiência
+        sign_out: Sair
+    team:
+      name:
+        singular: Equipe
+        plural:  Equipes
+      links:
+        sign_out: Sair
+        access: Área administrativa
+    breadcrumbs:
+      edit: Editar
+      new:
+        m: Novo
+        f: Nova
+      show: '%{model} #%{id}'
+      home: Página Inicial
 

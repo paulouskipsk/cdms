@@ -1,24 +1,19 @@
-# README
+![CI](https://github.com/TSIDW5/cdms/workflows/CI/badge.svg?branch=master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/1999c562acdd528fd37f/maintainability)](https://codeclimate.com/github/TSIDW5/cdms/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/1999c562acdd528fd37f/test_coverage)](https://codeclimate.com/github/TSIDW5/cdms/test_coverage)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Certificate and Declaration Management System
 
-Things you may want to cover:
+## What is the CDMS?
 
-* Ruby version
+It is software that colleges can use to manage certificates and statements issued
 
-* System dependencies
+### Maintainers
 
-* Configuration
+* Diego Marczal (https://github.com/dmarczal)
 
-* Database creation
+### License
 
-* Database initialization
+MIT License. Copyright 2020 CDMS.
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+You are not granted rights or licenses to the trademarks of the CDMS, including without limitation the CDMS name or logo.

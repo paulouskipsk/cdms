@@ -1,8 +1,13 @@
 require 'support/simplecov'
+require 'support/file_helper'
+require 'support/asserts/active_link'
+require 'support/asserts/breadcrumbs'
+require 'support/asserts/redirect_to'
 
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'
+require 'minitest/autorun'
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
@@ -23,6 +28,12 @@ class ActiveSupport::TestCase
   include Devise::Test::IntegrationHelpers
   include Warden::Test::Helpers
   include FactoryBot::Syntax::Methods
+end
+
+class ActionDispatch::IntegrationTest
+  include ::Asserts::Breadcrumbs
+  include ::Asserts::ActiveLink
+  include ::Asserts::RedirectTo
 end
 
 Shoulda::Matchers.configure do |config|
