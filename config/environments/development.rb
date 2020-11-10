@@ -9,7 +9,8 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.hosts << "tsi-cdms.tk"
   config.hosts << "www.tsi-cdms.tk"
-
+  config.hosts << "cdms.tsi.pro.br"
+  
   config.cache_classes = false
 
   # Do not eager load code on boot.

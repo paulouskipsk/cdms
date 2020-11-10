@@ -21,10 +21,10 @@ x-nginx: &nginx
     dockerfile: /var/www/cdms/docker_prod/nginx/Dockerfile
   volumes:
     - .:/var/www/cdms
-  tmpfs:
-    - /tmp
   depends_on:
     - web
+  tmpfs:
+    - /tmp
   networks:
     - app-network
   stdin_open: true
@@ -40,7 +40,6 @@ services:
       - /var/www/cdms/:/var/www/cdms/
     ports:
       - 80:80
-      - 443:443
     environment:
       RAILS_ENV: development
             
@@ -49,7 +48,7 @@ services:
     command: >
       bash -c "
         rm -f tmp/pids/server.pid &&
-        bundle exec puma
+        bundle exec rails s -p 3000 -b '0.0.0.0'
         " # Removing server.pid is technically a cleanup script
     container_name: web
     # ports:
