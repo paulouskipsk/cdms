@@ -19,8 +19,8 @@ jobs:
         aws-secret-access-key: "CT7D1JeF5wQoG/rLl/WpQ4YkvXSGgoAGujj2d4t7"
         aws-region: us-east-2
 
-    - name: att git ...
-      run: |
-        cd /var/www/cdms/
-        git pull origin seminario-everton
-        git status
+        - name: att git ...
+          run: |
+            cd /var/www/cdms/
+            git pull origin seminario-everton
+            git status
