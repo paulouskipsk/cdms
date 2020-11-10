@@ -4,20 +4,16 @@ on:
     branches:
       - seminario-everton
       - master
+    pull_request_target:
+      types: [assigned, opened, synchronize, reopened]
 jobs:
   deploy:
     name: deploy-cdms
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
       - name: Deploy to Server
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SERVER_IP }}
-          username: ${{ secrets.SERVER_USERNAME }}
-          password: ${{ secrets.SERVER_PASSWORD }}
-          source: ${{ secrets.PROJECT_PATH }}
-          script: |
-            cd ${{ secrets.PROJECT_PATH }}
-            git pull origin seminario-everton
-            git status
+        run: |
+          ssh -i "${{ secrets.AWS_SSH_KEY }}" ubuntu@ec2-3-15-189-73.us-east-2.compute.amazonaws.com
+          cd /var/www/cdms/
+          git pull origin seminario-everton
+          git status
