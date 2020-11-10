@@ -13,14 +13,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      uses: aws-actions/configure-aws-credentials@v1
+      uses: applepoy/ssh-action@master
       with:
-        aws-access-key-id: "AKIAVE6VFYVVHLDB4VPE"
-        aws-secret-access-key: "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"
-        aws-region: us-east-2
-
-        - name: att git ...
-          run: |
-            cd /var/www/cdms/
-            git pull origin seminario-everton
-            git status
+        host: cdms.tsi.pro.com
+        username: deployer
+        key: deployercdms
+        port: 22
+        script: |
+          cd /var/www/cdms/
+          git status
