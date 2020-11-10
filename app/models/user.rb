@@ -28,6 +28,8 @@ class User < ApplicationRecord
     self.email = "#{username}@utfpr.edu.br"
   end
 
+  # Admin roles
+  # --------------------------
   def is?(role)
     return true if role.eql?(:admin) && self.role
 
@@ -40,23 +42,35 @@ class User < ApplicationRecord
     is?(:manager) && role.users.count == 1
   end
 
-  def can_destroy?
-    return unless last_manager?
+  # Departments
+  # --------------------------
+  def responsible_of?(department)
+    return false unless department
 
-    errors.add :base, I18n.t('flash.actions.least', resource_name: Administrator.model_name.human)
-
-    throw :abort
+    department_users.responsible_role.find_by(department_id: department.id)
   end
 
   def member_of_any?
     departments.any?
   end
 
+  def departments_and_modules
+    department_users.includes(:department).map do |dep_user|
+      department = dep_user.department
+      { modules: populate_modules(department.id),
+        department: department, role: dep_user.role }
+    end
+  end
+
+  # Documents
+  # --------------------------
   def documents
     department_ids = departments.pluck(:id)
     Document.where(department_id: department_ids)
   end
 
+  # Class methods
+  # --------------------------
   def self.admins
     includes(:role).where.not(role_id: nil)
   end
@@ -65,20 +79,21 @@ class User < ApplicationRecord
     where(role_id: nil).where('unaccent(name) ILIKE unaccent(?)', "%#{term}%").order('name ASC')
   end
 
-  def departments_and_modules
-    department_users.includes(:department).map do |dep_user|
-      { 'modules' => populate_modules(dep_user.department.id),
-        'department' => dep_user.department, 'role' => dep_user.role }
-    end
-  end
-
   private
 
-  def populate_modules(department_id)
-    department_module_users.includes(:department_module).map do |mod_user|
-      next unless department_id == mod_user.department_module.department_id
+  def can_destroy?
+    return unless last_manager?
 
-      { 'role' => mod_user.role, 'module' => mod_user.department_module }
-    end.compact
+    errors.add :base, I18n.t('flash.actions.least', resource_name: Administrator.model_name.human)
+
+    throw :abort
+  end
+
+  def populate_modules(department_id)
+    dmus = department_module_users.includes(:department_module)
+                                  .where(department_modules: { department_id: department_id })
+    dmus.map do |mod_user|
+      { role: mod_user.role, module: mod_user.department_module }
+    end
   end
 end

@@ -158,12 +158,24 @@ class UserTest < ActiveSupport::TestCase
       create(:department_module_user, :collaborator, user: user, department_module: dep_module)
 
       assert_equal(2, user.departments_and_modules.count)
-      assert_equal(department, user.departments_and_modules[1]['department'])
-      assert_equal(dep_module, user.departments_and_modules[1]['modules'][0]['module'])
+      assert_equal(department, user.departments_and_modules[1][:department])
+      assert_equal(dep_module, user.departments_and_modules[1][:modules][0][:module])
     end
   end
 
   context '.department' do
+    should '.responsible_of?' do
+      user = create(:user)
+      assert_not user.responsible_of?(nil)
+
+      department = create(:department)
+
+      assert_not user.responsible_of?(department)
+
+      department.department_users.create(user: user, role: :responsible)
+      assert user.responsible_of?(department)
+    end
+
     should '.is_member_of_any?' do
       user = create(:user)
       assert_not user.member_of_any?
