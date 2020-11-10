@@ -8,17 +8,15 @@ on:
       types: [assigned, opened, synchronize, reopened]
 
 jobs:
-  deploy:
-    name: deploy-cdms
+  build:
+    name: Build
     runs-on: ubuntu-latest
-
     steps:
-      uses: applepoy/ssh-action@master
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@master
       with:
-        host: cdms.tsi.pro.com
+        host: cdms.tsi.pro.br
         username: deployer
-        key: deployercdms
+        password: deployercdms
         port: 22
-        run: |
-          cd /var/www/cdms/
-          git status
+        script: whoami
