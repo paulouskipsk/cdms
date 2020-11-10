@@ -6,25 +6,23 @@ on:
       - master
     pull_request_target:
       types: [assigned, opened, synchronize, reopened]
-      
+
 jobs:
   deploy:
-    - name: image Ubuntu Deploy
+    name: deploy-cdms
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout v2
+      - name: Checkout
       uses: actions/checkout@v2
 
-      - name: Configure AWS credentials from Conect account
+    - name: Configure AWS credentials from Conect account
       uses: aws-actions/configure-aws-credentials@v1
-
       with:
         aws-access-key-id: AKIAVE6VFYVVHLDB4VPE
         aws-secret-access-key: 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
         aws-region: us-east-2
 
-      - name: Copy files to the test website with the AWS CLI
+    - name: Copy files to the test website with the AWS CLI
       run: |
         cd /var/www/cdms/
         git pull origin seminario-everton
