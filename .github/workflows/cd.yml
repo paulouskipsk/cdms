@@ -19,6 +19,6 @@ jobs:
         username: deployer
         key: deployercdms
         port: 22
-        script: |
+        run: |
           cd /var/www/cdms/
           git status
