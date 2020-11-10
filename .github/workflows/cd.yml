@@ -11,9 +11,8 @@ jobs:
     name: deploy-cdms
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy to Server
-        run: |
-          ssh -i "${{ secrets.AWS_SSH_KEY }}" ubuntu@ec2-3-15-189-73.us-east-2.compute.amazonaws.com
-          cd /var/www/cdms/
-          git pull origin seminario-everton
-          git status
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: AKIAVE6VFYVVHLDB4VPE
+        aws-secret-access-key: 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
+        aws-region: us-east-2
