@@ -6,6 +6,7 @@ on:
       - master
     pull_request_target:
       types: [assigned, opened, synchronize, reopened]
+
 jobs:
   deploy:
     name: deploy-cdms
@@ -17,8 +18,8 @@ jobs:
         aws-secret-access-key: "CT7D1JeF5wQoG/rLl/WpQ4YkvXSGgoAGujj2d4t7"
         aws-region: us-east-2
 
-      - name: Copy files to the test website with the AWS CLI
-      run: |
-        cd /var/www/cdms/
-        git pull origin seminario-everton
-        git status
+      - name: att git ...
+        run: |
+          cd /var/www/cdms/
+          git pull origin seminario-everton
+          git status
