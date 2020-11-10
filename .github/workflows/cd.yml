@@ -9,15 +9,16 @@ on:
       
 jobs:
   deploy:
+    - name: image Ubuntu Deploy
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout v2
       uses: actions/checkout@v2
 
       - name: Configure AWS credentials from Conect account
       uses: aws-actions/configure-aws-credentials@v1
-      
+
       with:
         aws-access-key-id: AKIAVE6VFYVVHLDB4VPE
         aws-secret-access-key: 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
