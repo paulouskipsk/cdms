@@ -2,7 +2,9 @@ name: CD
 on:
   push:
     branches:
-      - master
+      - seminario-everton
+    pull-requests:
+      - seminario-everton
 jobs:
   deploy:
     runs-on: ubuntu-latest
