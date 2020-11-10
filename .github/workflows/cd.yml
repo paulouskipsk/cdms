@@ -11,13 +11,12 @@ jobs:
     name: deploy-cdms
     runs-on: ubuntu-latest
     steps:
-      - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
         aws-access-key-id: "AKIAVE6VFYVVHLDB4VPE"
         aws-secret-access-key: "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"
         aws-region: us-east-2
-        
+
       - name: Copy files to the test website with the AWS CLI
       run: |
         cd /var/www/cdms/
