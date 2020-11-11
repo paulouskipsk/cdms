@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Source in util.sh so we can have our nice tools
-. $(cd $(dirname $0); pwd)/util.sh
-
 # We require an email to register the ssl certificate for
 if [ -z "$CERTBOT_EMAIL" ]; then
     error "CERTBOT_EMAIL environment variable undefined; certbot will do nothing"

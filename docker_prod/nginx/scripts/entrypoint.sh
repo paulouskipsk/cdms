@@ -4,9 +4,6 @@
 trap "exit" INT TERM
 trap "kill 0" EXIT
 
-# Source in util.sh so we can have our nice tools
-. $(cd $(dirname $0); pwd)/util.sh
-
 # first include any user configs if they've been mounted
 template_user_configs
 

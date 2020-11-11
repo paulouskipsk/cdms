@@ -18,6 +18,15 @@ RUN apt update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# # Copy in scripts for certbot
+# RUN /scripts
+
+# RUN cd /
+# https://raw.githubusercontent.com/staticfloat/docker-nginx-certbot/master/src/scripts/util.sh
+# https://raw.githubusercontent.com/staticfloat/docker-nginx-certbot/master/src/scripts/run_certbot.sh
+# https://raw.githubusercontent.com/staticfloat/docker-nginx-certbot/master/src/scripts/entrypoint.sh
+
+RUN chmod +x /scripts/*.sh
 # establish where Nginx should look for files
 ENV RAILS_ROOT /var/www/cdms
 
@@ -25,4 +34,4 @@ ENV RAILS_ROOT /var/www/cdms
 WORKDIR $RAILS_ROOT
 
 ENTRYPOINT []
-CMD ["/bin/bash", "/scripts/entrypoint.sh"]
+CMD ["/bin/bash", "/var/www/cdms/docker_prod/nginx/scripts/entrypoint.sh"]

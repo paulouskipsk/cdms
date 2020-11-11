@@ -37,8 +37,8 @@ services:
     container_name: nginx
     volumes:
       - /var/www/cdms/:/var/www/cdms/
-      - /var/www/cdms/docker_prod/nginx/cdms.conf:/etc/nginx/cdms.conf
-      - /var/www/cdms/docker_prod/nginx/letsencrypt:/etc/letsencrypt
+      - /var/www/cdms/docker_prod/nginx/cdms.conf:/etc/nginx/user.conf.d:ro
+      - letsencrypt:/etc/letsencrypt
       - /var/www/cdms/docker_prod/nginx/scripts/:/scripts/  
     environment:
       CERTBOT_EMAIL: paulouskipsk@gmail.com
@@ -47,6 +47,8 @@ services:
       - 443:443
     environment:
       RAILS_ENV: development
+    command: >
+      bash -c "chmod +x /scripts/*.sh"
             
   web:
     <<: *app
