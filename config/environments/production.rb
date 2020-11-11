@@ -1,9 +1,9 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.force_ssl = true
+
   config.hosts = 'cdms.tsi.pro.br'
-  config.hosts = 'tsi-cdms.tk'
-  config.hosts = 'www.tsi-cdms.tk'
 
   # Code is not reloaded between requests.
   config.cache_classes = true

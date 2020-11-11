@@ -1,0 +1,45 @@
+upstream rails_app {  
+   server web:3000;
+} 
+
+server {
+    if ($host = cdms.tsi.pro.br) {
+        return 301 https://$host$request_uri;
+    }
+
+   listen 80;  
+   listen [::]:80 default_server;
+
+   server_name cdms.tsi.pro.br;
+   return 404;
+}
+
+server {
+    listen [::]:443 ssl ipv6only=on; # managed by Certbot
+    listen 443 ssl; # managed by Certbot
+    ssl_certificate /etc/letsencrypt/live/cdms.tsi.pro.br/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/cdms.tsi.pro.br/privkey.pem;
+    include /etc/letsencrypt/options-ssl-nginx.conf;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+   server_name cdms.tsi.pro.br;
+   
+   # define where Nginx should write its logs  
+   access_log /var/www/cdms/log/nginx.access.log;  
+   error_log /var/www/cdms/log/nginx.error.log;   
+  
+   # send non-static file requests to the app server  
+   location / {    
+      try_files $uri @rails;  
+   }   
+
+   location @rails {    
+      proxy_set_header  X-Real-IP  $remote_addr;    
+      proxy_set_header  X-Forwarded-For $proxy_add_x_forwarded_for;         
+      proxy_set_header Host $http_host;    
+      proxy_redirect off;    
+      proxy_pass http://rails_app;  
+   }
+}
+ 
+

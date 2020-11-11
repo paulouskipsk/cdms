@@ -38,7 +38,7 @@ services:
     volumes:
       - /var/www/cdms/docker_prod/nginx/cdms.conf:/etc/nginx/conf.d/default.conf
       - /var/www/cdms/:/var/www/cdms/
-      - /etc/letsencript/:/etc/letsencript/
+      - /etc/letsencrypt/:/etc/letsencrypt/
     ports:
       - 80:80
     environment:
